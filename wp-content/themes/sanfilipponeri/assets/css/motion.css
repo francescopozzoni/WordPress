@@ -266,3 +266,20 @@
 		}
 	}
 }
+
+/*
+ * Mobile, tablet e schermi touch: niente zoom delle immagini in hover (sui
+ * touch resterebbe "attivo" dopo il tocco). L'ingrandimento al clic resta.
+ */
+@media (max-width: 1023.98px), (hover: none) {
+
+	.wp-block-image a:hover img,
+	.post-thumbnail a:hover img,
+	.wp-block-latest-posts > li:hover .wp-block-latest-posts__featured-image img,
+	.display-posts-listing .listing-item:hover > a.image img,
+	.ultp-block-item:hover .ultp-block-image a img,
+	.entry-content .wp-lightbox-container:hover img {
+		transform: none;
+		box-shadow: none;
+	}
+}
