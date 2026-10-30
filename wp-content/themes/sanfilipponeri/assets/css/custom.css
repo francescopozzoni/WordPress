@@ -350,9 +350,24 @@ div.wp-block-buttons {
     max-width: var(--sfn-content-width, var(--responsive--alignwide-width));
 }
 
-/* testi più stretti dei blocchi multimediali, per righe di lunghezza leggibile */
-.entry-content > :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6, blockquote, pre, .wp-block-heading, .wp-block-list, .wp-block-quote, .wp-block-preformatted, .wp-block-verse, .wp-block-details) {
-	--sfn-content-width: min(var(--sfn-prose-width), var(--responsive--alignwide-width));
+/*
+ * Testi più stretti dei blocchi multimediali, per righe di lunghezza leggibile.
+ * Vale per i testi diretti della pagina e per quelli dentro gruppi, contenuto
+ * delle schede dello slider e altri contenitori a flusso (non nelle colonne,
+ * che sono già più strette).
+ */
+:is(.entry-content, [class*="inner-container"], .odn-slider-body, .is-layout-flow:not(.wp-block-column), .is-layout-constrained) > :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6, blockquote, pre, .wp-block-heading, .wp-block-list, .wp-block-quote, .wp-block-preformatted, .wp-block-verse, .wp-block-details):not(.alignwide):not(.alignfull) {
+	--sfn-content-width: min(var(--sfn-prose-width), 100%);
+	max-width: var(--sfn-content-width);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Elenchi di articoli (shortcode Display Posts): stessa colonna dei testi */
+.entry-content .display-posts-listing {
+	max-width: min(var(--sfn-prose-width), 100%);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 table td {

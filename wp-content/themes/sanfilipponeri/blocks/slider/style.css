@@ -483,10 +483,6 @@ p.odn-p-big {
 	margin-bottom: 0;
 }
 
-.odn-slider-body > :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6, blockquote, pre, .wp-block-heading, .wp-block-list, .wp-block-quote, .wp-block-preformatted, .wp-block-verse, .wp-block-details) {
-	--sfn-content-width: min(var(--sfn-prose-width), var(--responsive--alignwide-width));
-}
-
 .odn-slider-body > .alignfull {
 	max-width: none;
 }
