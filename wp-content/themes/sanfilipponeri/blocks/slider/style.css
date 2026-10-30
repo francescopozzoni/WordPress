@@ -432,7 +432,7 @@ p.odn-p-small {
 }
 
 p.odn-p-big {
-	font-size: clamp(1.4rem, 1rem + 2vw, 2.6rem);
+	font-size: clamp(1.35rem, 0.85rem + 1.5vw, 2.4rem);
 	line-height: 1.25;
 }
 
@@ -515,5 +515,43 @@ p.odn-p-big {
 		margin-top: 1.5rem;
 		margin-bottom: 1.75rem;
 		row-gap: 0.5rem;
+	}
+}
+
+/*
+ * Il testo della slide non deve finire sopra la decorazione a destra
+ * (sfondo-2.svg, larga 0,5625 volte l'altezza dello slider). Lo spazio a
+ * sinistra (puntini e freccia) è circa 150px, più un margine di sicurezza.
+ */
+@media screen and (min-width: 1330.02px) {
+
+	/* decorazione larga 394px, posizionata al 90% */
+	#odn-slide-container {
+		max-width: calc(0.9 * (100% - 394px) - 12rem);
+	}
+}
+
+@media screen and (min-width: 700.02px) and (max-width: 1330px) {
+
+	#odn-slider {
+		--odn-deco-width: 338px; /* altezza 600px */
+	}
+
+	#odn-slide-container {
+		max-width: calc(100% - var(--odn-deco-width) - 12rem);
+	}
+}
+
+@media screen and (min-width: 700.02px) and (max-width: 1050px) {
+
+	#odn-slider {
+		--odn-deco-width: 282px; /* altezza 500px */
+	}
+}
+
+@media screen and (min-width: 700.02px) and (max-width: 870px) {
+
+	#odn-slider {
+		--odn-deco-width: 225px; /* altezza 400px */
 	}
 }
