@@ -1001,3 +1001,33 @@ div.tickera_additional_info h3:before {
 .site-footer {
 	padding-bottom: 0.75rem;
 }
+
+/*
+ * Mobile e tablet: margine laterale per il contenuto delle pagine (testi,
+ * immagini, elenchi), che altrimenti toccherebbe i bordi dello schermo.
+ * Lo slider resta da bordo a bordo.
+ */
+@media only screen and (max-width: 1023.98px) {
+
+	:root {
+		--sfn-gutter: 2rem;
+	}
+
+	.entry-content {
+		padding-left: var(--sfn-gutter) !important;
+		padding-right: var(--sfn-gutter) !important;
+	}
+
+	.entry-content > .wp-block-sanfilipponeri-slider {
+		width: calc(100% + 2 * var(--sfn-gutter));
+		margin-left: calc(-1 * var(--sfn-gutter)) !important;
+		margin-right: calc(-1 * var(--sfn-gutter)) !important;
+	}
+}
+
+@media only screen and (max-width: 481.98px) {
+
+	:root {
+		--sfn-gutter: 1.25rem;
+	}
+}

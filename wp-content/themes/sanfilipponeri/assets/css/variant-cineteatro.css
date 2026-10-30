@@ -46,9 +46,7 @@ a.wp-block-latest-posts__post-title {
 	}
 }
 
-.entry-content {
-	padding: 0px 5px !important
-}
+/* Il margine laterale del contenuto su mobile è comune (custom.css, --sfn-gutter) */
 
 /* Modalità scura: colori dei blocchi PostX leggibili su fondo scuro */
 .is-dark-theme.is-dark-theme {
