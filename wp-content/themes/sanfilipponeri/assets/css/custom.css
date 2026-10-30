@@ -75,8 +75,11 @@ body {
 		line-height: 0;
 	}
 
-	.site-header .site-logo .custom-logo {
+	.site-header .site-logo .custom-logo:not(.sfn-dark-logo) {
 		display: block;
+	}
+
+	.site-header .site-logo .custom-logo {
 		max-width: min(210px, calc(100vw - 7rem));
 		max-height: 64px;
 		width: auto;
