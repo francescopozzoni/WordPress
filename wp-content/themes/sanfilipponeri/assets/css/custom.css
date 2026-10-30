@@ -488,22 +488,30 @@ article.page > header.entry-header.alignwide {
 header.entry-header.alignwide {
 	background: #004077;
 }
+/* fasce dei titoli: da bordo a bordo, ma al massimo --sfn-max-width (ultra-wide) */
 header.page-header.alignwide {
 	background: #e42313;
 	padding-bottom: 0;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: auto;
+	margin-right: auto;
 	width: 100%;
-	max-width: none;
+	max-width: var(--sfn-max-width);
 }
 .singular .entry-header {
     padding-top: var(--sfn-band-padding);
 		padding-bottom: var(--sfn-band-padding);
 	/* spazio tra la fascia del titolo e il contenuto (Twenty Twenty-One: 90px) */
 	margin-bottom: calc(1.25 * var(--global--spacing-vertical));
-	margin-left: 0;
-	margin-right: 0;
-	max-width: none;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: var(--sfn-max-width);
+}
+
+/* desktop: più spazio sotto la fascia del titolo */
+@media only screen and (min-width: 1024px) {
+	.singular .entry-header {
+		margin-bottom: calc(2 * var(--global--spacing-vertical));
+	}
 }
 
 h1.page-title {

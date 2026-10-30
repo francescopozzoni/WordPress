@@ -373,9 +373,12 @@ div.odn-slider-body {
 
 /* Lo slider occupa tutta la larghezza anche dentro .entry-content */
 .entry-content > .wp-block-sanfilipponeri-slider {
-	max-width: none !important;
+	/* da bordo a bordo, ma al massimo --sfn-max-width sugli schermi ultra-wide */
+	max-width: var(--sfn-max-width, 90rem) !important;
 	width: 100%;
 	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .odn-slider-body {
