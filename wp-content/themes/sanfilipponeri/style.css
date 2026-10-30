@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.10.1
+Version: 3.10.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -293,7 +293,7 @@ a:hover,
 	 */
 	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field {
 		position: absolute;
-		top: calc(100% + 0.5rem);
+		top: calc(100% - 0.25rem);
 		right: 0;
 		width: min(18rem, 80vw) !important;
 		/* il tema padre limita i campi alla larghezza del contenitore (la lente) */
@@ -333,7 +333,7 @@ a:hover,
 	}
 
 	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field {
-		top: calc(100% + 0.75rem);
+		top: calc(100% - 0.25rem);
 		left: 50%;
 		right: auto;
 		transform: translateX(-50%);
