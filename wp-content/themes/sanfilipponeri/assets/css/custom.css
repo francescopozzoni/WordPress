@@ -1019,7 +1019,7 @@ div.tickera_additional_info h3:before {
 	}
 
 	.entry-content > .wp-block-sanfilipponeri-slider {
-		width: calc(100% + 2 * var(--sfn-gutter));
+		width: calc(100% + 2 * var(--sfn-gutter)) !important;
 		margin-left: calc(-1 * var(--sfn-gutter)) !important;
 		margin-right: calc(-1 * var(--sfn-gutter)) !important;
 	}
