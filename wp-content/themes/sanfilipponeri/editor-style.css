@@ -60,16 +60,17 @@ body {
 }
 
 /*
- * Larghezza: sul sito il contenuto normale è largo quanto "wide"
- * (regola "larghezza" in assets/css/custom.css), quindi anche qui.
+ * Larghezza unica: come sul sito, tutti i blocchi hanno la larghezza del
+ * testo (anche quelli salvati in passato come "ampi" o "a piena larghezza").
  */
-.wp-block {
-	max-width: var(--responsive--alignwide-width);
-}
-
-/* Testi più stretti, come sul sito */
-.wp-block:is([data-type="core/paragraph"], [data-type="core/heading"], [data-type="core/list"], [data-type="core/quote"], [data-type="core/preformatted"], [data-type="core/verse"], [data-type="core/details"]):not([data-align="wide"]):not([data-align="full"]) {
-	max-width: min(var(--sfn-prose-width), var(--responsive--alignwide-width));
+.wp-block,
+.wp-block[data-align="wide"],
+.wp-block[data-align="full"],
+.wp-block.alignwide,
+.wp-block.alignfull {
+	max-width: min(var(--sfn-prose-width), 100%);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Titolo della pagina: fascia rossa con testo bianco centrato, come sul sito */
@@ -106,23 +107,23 @@ h6 {
 
 /*
  * Link come sul sito: blu, sottolineatura sottile staccata dal testo,
- * rossi in hover. "body" diventa .editor-styles-wrapper: la specificità più
- * alta evita che prevalgano gli stili dell'amministrazione di WordPress.
+ * rossi in hover. "body" diventa .editor-styles-wrapper; !important perché
+ * nell'editor Twenty Twenty-One ricalcola i colori dallo sfondo (nero su bianco).
  */
-body a,
-body a:link,
-body a:visited {
-	color: #004077;
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button),
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button):link,
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button):visited {
+	color: #004077 !important;
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 3px;
 	text-decoration-skip-ink: all;
 }
 
-body a:hover,
-body a:active,
-body a:focus {
-	color: #e42313;
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button):hover,
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button):active,
+body a:not(.wp-block-button__link):not(.wp-block-file__button):not(.wp-element-button):focus {
+	color: #e42313 !important;
 	text-decoration-style: solid;
 	text-decoration-skip-ink: none;
 }
@@ -140,11 +141,11 @@ body a.wp-block-file__button {
 
 /* Pulsanti: stile del pulsante "Cerca" (pieno blu, testo bianco; invertito in hover) */
 body .wp-block-button .wp-block-button__link,
-body .wp-block-search__button,
+body .wp-block-search .wp-block-search__button,
 body .wp-block-file .wp-block-file__button {
-	color: #fff;
-	background-color: #004077;
-	border: var(--button--border-width) solid #004077;
+	color: #fff !important;
+	background-color: #004077 !important;
+	border: var(--button--border-width) solid #004077 !important;
 	font-size: var(--sfn-control-font-size);
 	padding: var(--sfn-control-padding);
 	line-height: 1.3;
@@ -154,16 +155,16 @@ body .wp-block-file .wp-block-file__button {
 }
 
 body .wp-block-button.is-style-outline .wp-block-button__link {
-	color: #004077;
-	background-color: #fff;
+	color: #004077 !important;
+	background-color: #fff !important;
 }
 
 /* Separatori larghi quanto il contenuto */
-hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
-	max-width: var(--responsive--alignwide-width);
+hr.wp-block-separator:not(.is-style-dots) {
+	max-width: min(var(--sfn-prose-width), 100%);
 }
 
 /* Lo slider della home occupa tutta la larghezza */
 .wp-block[data-type="sanfilipponeri/slider"] {
-	max-width: none;
+	max-width: none !important;
 }

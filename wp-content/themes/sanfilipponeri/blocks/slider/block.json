@@ -6,7 +6,7 @@
 	"title": "Slider a schede",
 	"category": "design",
 	"icon": "slides",
-	"description": "Slider della homepage: ogni scheda ha un titolo nel riquadro blu, un link nella barra di navigazione e un contenuto libero sotto.",
+	"description": "Slider della homepage: ogni scheda ha un titolo nel riquadro blu, un link nella barra di navigazione e un contenuto libero sotto. Occupa sempre tutta la larghezza della pagina.",
 	"keywords": [
 		"slider",
 		"home",
@@ -16,10 +16,7 @@
 	"textdomain": "sanfilipponeri",
 	"supports": {
 		"html": false,
-		"multiple": false,
-		"align": [
-			"full"
-		]
+		"multiple": false
 	},
 	"attributes": {
 		"align": {

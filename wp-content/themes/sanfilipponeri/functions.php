@@ -107,6 +107,9 @@ function sanfilipponeri_setup() {
 		)
 	);
 
+	// Un'unica larghezza per il contenuto: niente opzioni "ampia" e "piena" nei blocchi.
+	remove_theme_support( 'align-wide' );
+
 	// Sfondo predefinito bianco invece del verde di Twenty Twenty-One.
 	add_theme_support( 'custom-background', array( 'default-color' => 'ffffff' ) );
 }
