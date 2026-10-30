@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.5.2
+Version: 3.6.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -125,28 +125,31 @@ a:hover,
 
 /*
  * Ricerca nel menu principale (aggiunta da sanfilipponeri_menu_search()).
- * Da 482px in su è una lente compatta accanto all'ultima voce: cliccandola
- * il campo si apre verso sinistra sopra il menu, senza spostare le voci.
- * Sotto i 482px sta dentro il menu aperto, a tutta larghezza.
+ * Da 482px in su: nella barra c'è solo la lente; cliccandola si apre sotto un
+ * pannello (come un sottomenu) con campo e pulsante "Cerca".
+ * Sotto i 482px: campo sempre visibile dentro il menu aperto.
  */
 .sfn-menu-search__form {
-	position: relative;
 	display: flex;
 	align-items: center;
+	gap: 0.5rem;
 	width: 100%;
 }
 
 .primary-navigation .sfn-menu-search input.sfn-menu-search__field,
 .primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
-	width: 100%;
+	flex: 1 1 auto;
+	min-width: 0;
+	width: auto;
 	margin: 0;
-	padding: 0.45em 2.75em 0.45em 1.1em;
+	padding: 0.55em 1em;
 	font-size: var(--global--font-size-sm);
 	line-height: 1.3;
 	color: var(--sfn-color-text);
 	background: var(--sfn-surface);
 	border: 1px solid var(--sfn-color-border-soft);
 	border-radius: 999px;
+	box-shadow: none;
 }
 
 .primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
@@ -158,78 +161,80 @@ a:hover,
 	opacity: 0.6;
 }
 
-.primary-navigation .sfn-menu-search .sfn-menu-search__button {
-	position: absolute;
-	right: 0.3em;
-	top: 50%;
-	transform: translateY(-50%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 2em;
-	height: 2em;
-	min-width: 0;
-	padding: 0 !important;
-	border: 0 !important;
-	border-radius: 50% !important;
+.primary-navigation .sfn-menu-search .sfn-menu-search__submit {
+	flex: 0 0 auto;
+	margin: 0;
+	padding: 0.55em 1.1em !important;
+	font-size: var(--global--font-size-sm);
+	font-weight: bold;
+	line-height: 1.3;
+	border: 1px solid var(--sfn-button-border) !important;
+	border-radius: 999px !important;
 	background: var(--sfn-button-bg) !important;
 	color: var(--sfn-button-text) !important;
 	cursor: pointer;
 }
 
-.primary-navigation .sfn-menu-search .sfn-menu-search__button:hover,
-.primary-navigation .sfn-menu-search .sfn-menu-search__button:focus {
-	background: var(--sfn-color-accent) !important;
-	color: #fff !important;
+.primary-navigation .sfn-menu-search .sfn-menu-search__submit:hover,
+.primary-navigation .sfn-menu-search .sfn-menu-search__submit:focus {
+	background: var(--sfn-button-bg-hover) !important;
+	color: var(--sfn-button-text-hover) !important;
+	border-color: var(--sfn-button-border-hover) !important;
+}
+
+.primary-navigation .sfn-menu-search .sfn-menu-search__toggle {
+	display: none;
 }
 
 @media only screen and (min-width: 482px) {
 
-	.primary-navigation .sfn-menu-search {
+	/* La voce ha sempre la larghezza della lente: non copre le altre voci */
+	.primary-navigation > div > .menu-wrapper > li.sfn-menu-search {
 		position: relative;
+		flex: 0 0 auto;
+		width: auto;
 		display: flex;
 		align-items: center;
 		margin-left: calc(0.5 * var(--global--spacing-horizontal));
-		font-size: var(--global--font-size-sm);
 	}
 
-	.primary-navigation .sfn-menu-search .sfn-menu-search__form {
-		position: static;
-		width: auto;
-	}
-
-	/* Chiusa: si vede solo la lente (il campo è nascosto ma raggiungibile da tastiera) */
-	.primary-navigation .sfn-menu-search .sfn-menu-search__button {
-		position: static;
-		transform: none;
-		width: 2.4em;
-		height: 2.4em;
-	}
-
-	.primary-navigation .sfn-menu-search:not(:focus-within) input.sfn-menu-search__field {
-		position: absolute;
-		width: 1px !important;
-		height: 1px;
+	.primary-navigation .sfn-menu-search .sfn-menu-search__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		min-width: 0;
 		padding: 0 !important;
 		border: 0 !important;
-		opacity: 0;
-		pointer-events: none;
+		border-radius: 50% !important;
+		background: var(--sfn-button-bg) !important;
+		color: var(--sfn-button-text) !important;
+		cursor: pointer;
 	}
 
-	/*
-	 * Aperta: il campo compare sotto la lente, come un sottomenu,
-	 * così non copre le voci del menu.
-	 */
-	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field {
+	.primary-navigation .sfn-menu-search .sfn-menu-search__toggle:hover,
+	.primary-navigation .sfn-menu-search .sfn-menu-search__toggle[aria-expanded="true"] {
+		background: var(--sfn-color-accent) !important;
+		color: #fff !important;
+	}
+
+	/* Pannello: chiuso finché non si clicca la lente */
+	.primary-navigation .sfn-menu-search .sfn-menu-search__form {
+		display: none;
 		position: absolute;
-		top: calc(100% + 0.5rem);
+		top: calc(100% + 0.6rem);
 		right: 0;
-		width: min(18rem, 80vw) !important;
-		padding: 0.6em 1.1em !important;
-		background: var(--sfn-surface) !important;
-		border: 1px solid var(--sfn-color-border) !important;
+		width: min(22rem, 90vw);
+		padding: 0.6rem;
+		background: var(--sfn-surface);
+		border-radius: 14px;
 		box-shadow: var(--sfn-shadow);
 		z-index: 88889;
+	}
+
+	.primary-navigation .sfn-menu-search.is-open .sfn-menu-search__form {
+		display: flex;
 	}
 }
 
@@ -244,8 +249,8 @@ a:hover,
 	.primary-navigation .sfn-menu-search input.sfn-menu-search__field,
 	.primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
 		font-size: var(--global--font-size-md);
-		padding-top: 0.6em;
-		padding-bottom: 0.6em;
+		padding-top: 0.65em;
+		padding-bottom: 0.65em;
 	}
 }
 
