@@ -56,6 +56,65 @@
 			saveIndex( n );
 		}
 
+		/*
+		 * Altezza uniforme: le schede che differiscono dalla più alta di non più
+		 * di "cutoff" pixel prendono la sua altezza, così cambiando scheda la
+		 * pagina non salta; quelle molto più corte restano compatte.
+		 */
+		var cutoff = parseInt( root.getAttribute( 'data-height-cutoff' ), 10 );
+		cutoff = isNaN( cutoff ) ? 100 : cutoff;
+
+		function equalizeHeights() {
+			if ( ! bodiesContainer || ! bodies.length ) {
+				return;
+			}
+
+			var heights = [];
+			var tallest = 0;
+			var i;
+
+			// Misura ogni scheda alla larghezza reale, anche quelle nascoste.
+			bodiesContainer.style.position = 'relative';
+			for ( i = 0; i < bodies.length; i++ ) {
+				var body = bodies[ i ];
+				var previousDisplay = body.style.display;
+				body.style.minHeight = '';
+				if ( 'none' === getComputedStyle( body ).display ) {
+					body.style.visibility = 'hidden';
+					body.style.position = 'absolute';
+					body.style.left = '0';
+					body.style.right = '0';
+					body.style.display = 'block';
+					heights[ i ] = body.offsetHeight;
+					body.style.visibility = '';
+					body.style.position = '';
+					body.style.left = '';
+					body.style.right = '';
+					body.style.display = previousDisplay;
+				} else {
+					heights[ i ] = body.offsetHeight;
+				}
+				tallest = Math.max( tallest, heights[ i ] );
+			}
+
+			for ( i = 0; i < bodies.length; i++ ) {
+				bodies[ i ].style.minHeight = tallest - heights[ i ] <= cutoff ? tallest + 'px' : '';
+			}
+		}
+
+		var resizeTimer;
+		function scheduleEqualize() {
+			clearTimeout( resizeTimer );
+			resizeTimer = setTimeout( equalizeHeights, 150 );
+		}
+
+		window.addEventListener( 'resize', scheduleEqualize );
+		// Immagini e font cambiano le altezze dopo il caricamento.
+		window.addEventListener( 'load', equalizeHeights );
+		if ( document.fonts && document.fonts.ready ) {
+			document.fonts.ready.then( equalizeHeights );
+		}
+
 		root.addEventListener( 'click', function ( event ) {
 			var target = event.target.closest( '[data-index]' );
 			if ( target && root.contains( target ) ) {
@@ -77,6 +136,7 @@
 		} );
 
 		show( readIndex() || 1 );
+		equalizeHeights();
 	}
 
 	function boot() {

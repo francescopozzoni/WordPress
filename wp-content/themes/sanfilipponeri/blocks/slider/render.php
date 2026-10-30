@@ -30,8 +30,9 @@ $sanfilipponeri_count = count( $sanfilipponeri_slides );
 <?php
 echo get_block_wrapper_attributes( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	array(
-		'class' => 'sfn-slider',
-		'style' => '--odn-count: ' . (int) min( $sanfilipponeri_count, 4 ) . ';',
+		'class'              => 'sfn-slider',
+		'style'              => '--odn-count: ' . (int) min( $sanfilipponeri_count, 4 ) . ';',
+		'data-height-cutoff' => (string) max( 0, (int) ( $attributes['heightCutoff'] ?? 100 ) ),
 	)
 );
 ?>

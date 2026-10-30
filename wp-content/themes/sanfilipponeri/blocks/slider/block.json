@@ -25,6 +25,10 @@
 		"align": {
 			"type": "string",
 			"default": "full"
+		},
+		"heightCutoff": {
+			"type": "number",
+			"default": 100
 		}
 	},
 	"editorScript": "file:./editor.js",
