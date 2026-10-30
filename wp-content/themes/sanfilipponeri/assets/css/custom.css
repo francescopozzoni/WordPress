@@ -63,22 +63,29 @@ body {
 	}
 
 	.site-header .site-logo .custom-logo {
-		max-height: 54px;
+		max-height: 60px;
 		width: auto;
 		margin: 0;
 	}
 
+	/*
+	 * Menu chiuso: il pulsante sta nella stessa riga del logo (non posizionato
+	 * in alto come nel tema padre), così è centrato in altezza con il logo.
+	 * !important: il tema padre usa selettori molto specifici per questi casi.
+	 */
 	body:not(.primary-navigation-open) .site-header .primary-navigation {
-		top: 0;
-		bottom: 0;
+		position: static !important;
+		top: auto !important;
+		margin: 0 0 0 auto !important;
 		display: flex;
 		align-items: center;
 	}
 
 	body:not(.primary-navigation-open) .site-header .menu-button-container {
-		position: static;
-		padding-top: 0;
-		padding-bottom: 0;
+		position: static !important;
+		margin: 0 !important;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
 	}
 }
 
@@ -293,7 +300,6 @@ a:hover {
 		flex-basis: 100%;
 		margin-left: 0;
 		padding-left: var(--global--spacing-horizontal);
-		border-left: 2px solid rgba(255, 255, 255, 0.25);
 	}
 
 	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle[aria-expanded="false"] ~ .sub-menu {
