@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sanfilipponeri/slide",
+	"title": "Scheda dello slider",
+	"category": "design",
+	"icon": "excerpt-view",
+	"parent": [ "sanfilipponeri/slider" ],
+	"description": "Una scheda dello slider: testi del riquadro blu, voce della barra di navigazione e contenuto mostrato sotto.",
+	"textdomain": "sanfilipponeri",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"kicker": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonText": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "file:./editor.js",
+	"render": "file:./render.php"
+}

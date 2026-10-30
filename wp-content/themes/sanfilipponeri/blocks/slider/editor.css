@@ -1,0 +1,60 @@
+/* Anteprima delle schede nell'editor */
+.sfn-slider-editor {
+	border: 2px dashed #004077;
+	padding: 1em;
+}
+
+.sfn-slider-editor__hint {
+	font-size: 0.9em;
+	color: #004077;
+	margin: 0 0 1em;
+}
+
+.sfn-slide-editor {
+	border-left: 4px solid #004077;
+	margin: 0 0 1.5em;
+	padding: 0 0 0 1em;
+}
+
+.sfn-slide-editor__hero {
+	background: #004077;
+	color: #fff;
+	padding: 1em 1.5em;
+	margin-bottom: 1em;
+}
+
+.sfn-slide-editor__hero .odn-p-small,
+.sfn-slide-editor__hero .odn-p-big {
+	color: #fff;
+	margin: 0 0 0.3em;
+}
+
+.sfn-slide-editor__hero .odn-p-small {
+	font-family: Galano;
+	font-style: italic;
+}
+
+.sfn-slide-editor__hero .odn-p-big {
+	font-family: GalanoB;
+	font-size: 1.8em;
+	line-height: 1.3;
+}
+
+.sfn-slide-editor__hero .odn-p-big em {
+	font-family: Galano;
+	font-style: italic;
+}
+
+.sfn-slide-editor__hero .odn-button {
+	display: inline-block;
+	background: #fff;
+	color: #e42313;
+	border-radius: 30px;
+	padding: 0.4em 1.5em;
+	font-weight: bold;
+}
+
+.sfn-slide-editor__label {
+	font-weight: bold;
+	color: #e42313;
+}

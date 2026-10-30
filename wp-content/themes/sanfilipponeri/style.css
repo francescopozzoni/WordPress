@@ -1,0 +1,141 @@
+/*
+Theme Name: San Filippo Neri Nembro
+Theme URI: https://wordpress.org/themes/twentytwentyone/
+Template: twentytwentyone
+Author: Francesco Pozzoni e Michele Mariani
+Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e del CineTeatro San Filippo Neri di Nembro. Nome nel footer e link social si impostano dal Customizer (sezione "San Filippo Neri"); la homepage si compone con il blocco "Slider a schede".
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 7.4
+Version: 3.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sanfilipponeri
+*/
+
+/* Font personalizzati */
+@font-face {
+	font-family: "Galano";
+	font-style: normal;
+	src: url("./fonts/GalanoGrotesque-Regular.otf");
+}
+
+@font-face {
+	font-family: "Galano";
+	font-style: italic;
+	src: url("./fonts/GalanoGrotesque-Italic.otf");
+}
+
+@font-face {
+	font-family: "GalanoB";
+	font-style: normal;
+	src: url("./fonts/GalanoGrotesque-SemiBold.otf");
+}
+
+/* Override delle variabili di Twenty Twenty-One */
+:root {
+	--global--font-primary: var(--font-headings, GalanoB);
+	--global--font-secondary: var(--font-base, Galano);
+
+	--global--font-size-xxl: 2rem;
+	--heading--font-weight-page-title: 100;
+
+	--global--color-blue: #004077;
+	--global--color-primary: var(--global--color-blue);
+
+	--branding--logo--max-width: 230px;
+	--branding--logo--max-height: 100px;
+	--branding--logo--max-width-mobile: 150px;
+	--branding--logo--max-height-mobile: 100px;
+}
+
+/* Footer */
+.site-footer {
+	max-width: 100%;
+}
+
+#my-footer {
+	height: 100px;
+	width: 100%;
+	background-color: #004077;
+	position: relative;
+	display: block;
+}
+
+#my-footer-img {
+	height: 100px;
+	position: absolute;
+	right: 0;
+	display: inline;
+}
+
+#my-footer-img-mobile {
+	height: 100px;
+	position: absolute;
+	right: 0;
+	display: none;
+}
+
+.my-footer-links {
+	cursor: pointer;
+	position: relative;
+	left: 30px;
+	top: 25px;
+	height: 50px;
+	padding-left: 30px;
+	display: inline;
+}
+
+/* scritta in grigio a fondo pagina */
+#footer-info {
+	width: 100%;
+	text-align: center;
+	font-size: 0.9rem;
+	color: #aaa;
+	position: relative;
+	top: 0;
+	margin: 0;
+	display: block;
+}
+
+#footer-info a {
+	color: #aaa;
+}
+
+#footer-info .easteregg-link {
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 660px) {
+
+	#my-footer {
+		height: 80px;
+		text-align: center;
+	}
+
+	#my-footer-img {
+		display: none;
+	}
+
+	#my-footer-img-mobile {
+		height: 80px;
+		position: absolute;
+		left: 0;
+		display: inline;
+		z-index: 50;
+	}
+
+	.my-footer-links {
+		height: 40px;
+		position: relative;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		padding-left: 10px;
+		padding-right: 10px;
+		z-index: 100;
+	}
+
+	#footer-info {
+		font-size: 0.8rem;
+	}
+}

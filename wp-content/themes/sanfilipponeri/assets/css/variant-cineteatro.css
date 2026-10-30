@@ -1,0 +1,51 @@
+/**
+ * Regole specifiche del sito del CineTeatro.
+ */
+
+:root {
+	--responsive--alignwide-width: 1100px;
+}
+
+a.wp-block-latest-posts__post-title {
+	font-size: 25px !important;
+	white-space: nowrap !important;
+	text-align: center;
+  overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	width: 100%;
+	text-transform: uppercase !important;
+}
+
+:root {
+	--postx_preset_Primary_color: #004077aa !important;
+  --postx_preset_Secondary_color: #004077 !important;
+	--postx_preset_Base_3_color: #fff !important;
+}
+
+.ultp-not-found-message {
+	color: #004077;
+	border-color: #004077;
+	border-width: 2px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+	.ultp-block-title {
+		display: none;
+	}
+	.ultp-block-item {
+		padding-bottom: 4px !important;
+		margin-bottom: 4px !important;
+	}
+	.ultp-block-row {
+  	grid-column-gap: 10px !important;
+	}
+}
+
+.entry-content {
+	padding: 0px 5px !important
+}

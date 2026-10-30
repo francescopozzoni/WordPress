@@ -1,0 +1,25 @@
+/* Stili per l'editor a blocchi: stessi font e colori del frontend. */
+@font-face {
+	font-family: "Galano";
+	font-style: normal;
+	src: url("./fonts/GalanoGrotesque-Regular.otf");
+}
+
+@font-face {
+	font-family: "Galano";
+	font-style: italic;
+	src: url("./fonts/GalanoGrotesque-Italic.otf");
+}
+
+@font-face {
+	font-family: "GalanoB";
+	font-style: normal;
+	src: url("./fonts/GalanoGrotesque-SemiBold.otf");
+}
+
+:root {
+	--global--font-primary: var(--font-headings, GalanoB);
+	--global--font-secondary: var(--font-base, Galano);
+	--global--color-blue: #004077;
+	--global--color-primary: var(--global--color-blue);
+}

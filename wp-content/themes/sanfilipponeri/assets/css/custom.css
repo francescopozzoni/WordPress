@@ -1,0 +1,542 @@
+/**
+ * CSS comune ai due siti (ex "CSS aggiuntivo" del Customizer, backup 2025-06-06).
+ * Le regole specifiche di ciascun sito sono in assets/css/variant-*.css.
+ * Il footer è in style.css.
+ */
+body {
+		margin:0 0px;
+		padding:0;
+		font-family: Galano;
+}
+
+
+*:focus, *:active, *:active:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/********* LOGO **********/
+.site-header.has-logo:not(.has-title-and-tagline).has-menu .site-logo img {
+    max-height: var(--branding--logo--max-height-mobile);
+}
+
+@media only screen and (max-width: 600px) {
+.primary-navigation {
+   	margin-left: auto;
+		margin-right: auto;
+	}
+	.site-branding {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+.site-branding {
+    color: var(--branding--color-text);
+    margin-right: 140px;
+    position: absolute;
+    top: 6.5px;
+}
+}
+
+/********* MOBILE MENU **********/
+.menu-button-container .button.button {
+    color: #004077;
+}
+.site .button:focus:not(.has-background), input[type="submit"]:focus:not(.has-background), input[type="reset"]:focus:not(.has-background), .wp-block-search__button:focus:not(.has-background), .wp-block-button .wp-block-button__link:focus:not(.has-background) {
+    color: #004077;
+
+}
+
+@media only screen and (max-width: 480px) {
+.primary-navigation > .primary-menu-container {
+	background-color: #004077;
+}
+	.primary-navigation > .primary-menu-container a {
+		color: #fff;
+	}
+.primary-navigation-open .menu-button-container {
+    background-color: transparent;
+	}
+.menu-button-container .button.button[aria-expanded*="true"] .dropdown-icon.close {
+    color: #fff;
+}
+}
+
+/********** Colori *********/
+/* menu in alto a destra */
+.primary-navigation {--primary-nav--color-link-hover: #004077}
+
+/* links */
+.widget-area a, .widget-area a:link, .widget-area a:visited, .widget-area a:active { color: #004077}
+
+a{
+	color: #004077;
+}
+a:hover {
+	color: #e42313;
+}
+
+a.customize-unpreviewable {
+	color: #004077;
+}
+a.customize-unpreviewable:hover {
+	color: #e42313;
+}
+/* entry */
+.entry-content p, .entry-content a:link, .entry-content a:visited, .entry-content a:active {color: #004077;}
+.entry-title {color: #004077}
+/* clicked link */
+.has-background-white .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
+    background: none;
+    color: #e42313;
+	text-decoration: underline;}
+
+
+/*LINKS*/
+.widget-area a:hover {
+    text-decoration-style: solid;
+}
+
+.entry-title a:hover {
+		color: #004077;
+    text-decoration-style: solid;
+}
+
+.entry-footer a:hover, .entry-footer a:focus {
+  color: #004077;
+	text-decoration-style: solid;
+}
+
+a:hover {
+    text-decoration-style: solid;
+}
+.wp-social-link a, .wp-social-link a:active, .wp-social-link a:hover, .wp-social-link a:visited, .wp-social-link svg {
+    color: currentColor;
+    fill: #fff;
+}
+
+/******** MENU *******/
+/* dimensioni font */
+.primary-navigation a {font-size: 0.7em;}
+/* comportamento on hover */
+.primary-navigation a:hover {
+    text-decoration: underline;
+        text-decoration-style: solid;
+    text-decoration-style: solid;
+	color: #e42313;
+}
+/* elemento selezionato */
+.primary-navigation .current-menu-item > a:first-child:hover, .primary-navigation .current_page_item > a:first-child:hover {
+    text-decoration-style: solid;
+	color: #e42313;}
+primary-navigation .current-menu-item > a:first-child, .primary-navigation .current_page_item > a:first-child {
+    color: #e42313;
+}
+
+/* menù a tendina */
+.svg-icon {
+	color: #004077;
+}
+
+.primary-navigation .sub-menu .menu-item a {
+	font-size: 14px;
+}
+
+.primary-navigation .sub-menu .menu-item > .sub-menu .menu-item > a {
+    font-size: 14px;
+		padding-left: 30px;
+		padding-right: 30px;
+}
+
+.sub-menu-toggle {
+	display: none !important;
+}
+
+.primary-navigation .sub-menu {
+    border: 1px solid #004077;
+}
+
+@media only screen and (max-width: 480px) {
+.primary-navigation .sub-menu {
+    border: none;
+}
+}
+
+/******** PADDINGS **********/
+.site-header {
+    padding-bottom: 20px;
+}
+.widget-area {
+    margin-top: 0;
+}
+
+
+/******** SEPARATORI *********/
+hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
+    max-width: var(--responsive--alignwide-width);
+}
+/******** TITOLI PAGINA E RICERCA ********/
+.singular .entry-title, h1.page-title {
+    font-size: 3em;
+		text-align: center;
+		color: #fff;
+}
+
+article.page > header.entry-header.alignwide {
+	background: #e42313;
+}
+
+header.entry-header.alignwide {
+	background: #004077;
+}
+header.page-header.alignwide {
+	background: #e42313;
+	padding-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	max-width: none;
+}
+.singular .entry-header {
+    padding-top: calc(2.7 * var(--global--spacing-vertical));
+		padding-bottom: calc(2.7 * var(--global--spacing-vertical));
+	margin-left: 0;
+	margin-right: 0;
+	max-width: none;
+}
+
+h1.page-title {
+    padding-top: calc(2.7 * var(--global--spacing-vertical));
+		padding-bottom: calc(2.7 * var(--global--spacing-vertical));
+}
+
+@media only screen and (max-width: 480px) {
+.singular .entry-title, h1.page-title 
+		{
+    font-size: 2em;
+	}
+}
+
+/******** CORPO ********/
+/* titoli */
+.entry-title a {
+    text-decoration: none;
+}
+.entry-title a:hover {
+    text-decoration: underline;
+}
+
+.entry-content > ul {
+	color: #004077;
+}
+
+h3 {
+	color: #004077;
+	text-transform: none !important;
+}
+
+/* immagini larghe */
+.entry-content img {
+    max-width: 100%;
+    padding-left: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+div.wp-block-buttons {
+	text-align: center;
+}
+
+/* larghezza */
+.post-thumbnail, .entry-content .wp-audio-shortcode, .entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce), [class*="inner-container"] > :not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce), .default-max-width {
+    max-width: var(--responsive--alignwide-width);
+}
+
+table td {
+	border: 0px;
+	text-align: center;
+}
+
+/*testo e immagine affiancate*/ 
+.wp-block-media-text .wp-block-media-text__content {
+    padding: 0;
+}
+/*footer articoli*/
+.entry-footer {
+	color: #004077;
+}
+.single .site-main > article > .entry-footer {
+	border-top: 2px solid #004077;
+}
+
+/* colore risultato ricerca */
+div.search-result-count {
+	color: #004077;
+}
+
+
+
+/******** COMMENTS ********/
+.comments-title, .comment-reply-title {
+	color: #004077;
+	font-size: 3rem;
+}
+.comment-body, .comment-body a , .comment-form{
+	color: #004077;
+}
+.comment-body a:hover {
+	color: #e42313;
+	text-decoration-style: solid;
+}
+
+.page-header {
+	border: none;
+}
+.page-content {
+	color: #004077;
+}
+
+
+/****** FORMS e BOTTONI *******/
+input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, .site textarea:focus {
+	  outline: none;
+		color: #004077;
+    font-size: 1.4rem;
+		padding: 15px 32px;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], .site textarea {color: #004077;
+border: var(--form--border-width) solid #004077;
+    font-size: 1.4rem;
+		padding: 15px 32px;
+    border-radius: 35px;
+		line-height: var(--button--line-height);
+}
+
+/* search */
+.search-submit:hover {
+    background-color: #004077;
+    color: #fff;
+}
+.site .button, input[type="submit"], input[type="reset"], .wp-block-search__button, .wp-block-button .wp-block-button__link {
+    color: #fff;
+    background-color: #004077;
+    border: var(--button--border-	width) solid #004077;
+    font-size: 1.4rem;
+		padding: 15px 32px;
+    border-radius: 35px;
+    font-weight: bold;
+}
+.site .button:hover, input[type="submit"]:hover, input[type="reset"]:hover, .wp-block-search .wp-block-search__button:hover, .wp-block-file .wp-block-file__button:hover {
+    color: #004077;
+    background: transparent;
+}
+.widget_search > .search-form .search-submit {color: #fff !important;
+background: #004077 !important;}
+.widget_search > .search-form .search-submit:hover {
+    background-color: #fff !important;
+    color: #004077 !important;}
+.search-form label {
+	font-weight: bold;
+}
+
+.search-form{
+	padding-right:30px;
+}
+
+/* bottoni di link */
+.wp-block-button:not(.is-style-outline) .wp-block-button__link:hover {
+    color: #fff !important;
+    background: #004077 !important;
+    border-color: #004077 !important;
+}
+
+.site .button, input[type="submit"], input[type="reset"], .wp-block-search__button, .wp-block-button .wp-block-button__link {
+    color: #004077;
+    background-color: #fff;
+    border: var(--button--border-width) solid #004077;
+    font-size: 1.4rem;
+	padding: 15px 32px;
+    border-radius: 35px;
+    font-weight: bold;
+}
+
+/* bottoni download */
+.wp-block-file .wp-block-file__button {
+    color: #fff !important;
+    cursor: pointer;
+    background-color: #004077;
+    border: var(--button--border-width) solid #004077;
+    font-size: 1.4rem;
+	padding: 15px 32px;
+    border-radius: 35px;
+    font-weight: bold;
+}
+
+.wp-block-file a.wp-block-file__button:active, .wp-block-file a.wp-block-file__button:focus, .wp-block-file a.wp-block-file__button:hover, .wp-block-file a.wp-block-file__button:visited {
+    color: #004077 !important;
+	  background-color: #fff !important;
+}
+
+/********* FOOTER *********/
+/* colori */
+.widget-area {color: #004077}
+
+/******** display posts ********/
+
+iframe {
+		margin-top: 30px;
+		margin-bottom: 30px;
+}
+
+a.title {
+	color: #004077;
+	font-family: GalanoB;
+	font-size: 2.3em;
+	text-decoration: none;
+}
+
+.excerpt-dash {
+	display: none;
+}
+
+.excerpt {
+	padding-top: 20px;
+	display: block;
+}
+
+a.title:hover {
+	color: #e42313;
+	text-decoration: underline;
+	text-underline-position: auto;
+}
+
+@media only screen and (min-width: 480px) and (max-width:700px) {
+	a.title {
+		font-size: 2rem;
+	}
+}
+
+@media only screen and (max-width:480px) {
+	a.title {
+		font-size: 1.9rem;
+	}
+}
+
+div.listing-item {
+	padding-bottom: 100px;
+	padding-top: 50px;
+	border-bottom: solid;
+}
+
+div.content {
+	padding-top: 50px;
+}
+
+.wp-block-image img {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.wp-block-embed {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#ng-wrapper-home.display-posts-listing > div.listing-item {
+	text-align: center;
+}
+
+#ng-wrapper-home.display-posts-listing > .listing-item > .image > img {
+	padding-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#newsletter-wrapper-home p {
+  margin-top: var(--global--spacing-vertical);
+  margin-bottom: var(--global--spacing-vertical);
+}
+
+#newsletter-wrapper-home img {
+  max-width: var(--responsive--alignwide-width);
+}
+
+#cinema-wrapper-home p {
+  margin-top: var(--global--spacing-vertical);
+  margin-bottom: var(--global--spacing-vertical);
+}
+
+
+/********* NG *********/
+
+.ng-title {
+  text-align: center;
+}
+
+/********* ROBA NASCOSTA *********/
+/** separatori vari **/
+.singular .entry-header {border-bottom: 0px}
+.site-footer > .site-info {border-top: 0px}
+
+/* label del widget di ricerca */
+.search-form label {
+    display: none;
+}
+
+/* link navigazione articoli */
+.post-navigation .nav-links {
+	display: none;
+}
+
+/* label autore articoli */
+.single .site-main > article > .entry-footer .byline {
+	display: none;
+}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu:before,
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu:after {
+		display: none;
+	}
+
+@media only screen and (max-width:480px) {
+	#recent-posts-2 {
+		display: none;
+	}
+	#categories-2 {
+		display: none;
+	}
+}
+
+@media only screen and (min-width:480px) {
+	#sep {
+		display: none;
+	}
+}
+
+.entry-content > iframe[style] {
+   margin-left: auto !important;
+	margin-right: auto !important;
+    max-width: var(--responsive--alignwide-width) !important;
+	display: block;
+}
+
+
+div.tickera_additional_info h3:before {
+	content: 'Inserisci le tue info e fai click su Procedi al Checkout';
+	visibility: visible;
+}
+
+#user-registration *, #user-registration.user-registration {
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.category-nembro-giovane .post-thumbnail {
+  display: none;
+}
