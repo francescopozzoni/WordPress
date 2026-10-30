@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.5.0
+Version: 3.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -87,6 +87,7 @@ Text Domain: sanfilipponeri
 	--sfn-surface: #fff;
 	--sfn-shadow: 0 8px 24px rgba(0, 32, 64, 0.16);
 	--sfn-chip-bg: rgba(0, 64, 119, 0.08);
+	--sfn-card-bg: #f2f6fa;
 
 	/* Bottoni (stile del pulsante "Cerca") */
 	--sfn-button-bg: #004077;
@@ -188,57 +189,47 @@ a:hover,
 		position: relative;
 		display: flex;
 		align-items: center;
-		width: 2.6em;
-		min-height: 2.6em;
 		margin-left: calc(0.5 * var(--global--spacing-horizontal));
 		font-size: var(--global--font-size-sm);
 	}
 
 	.primary-navigation .sfn-menu-search .sfn-menu-search__form {
-		position: absolute;
-		right: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 2.6em;
-		z-index: 88889;
-		transition: width 0.2s ease;
+		position: static;
+		width: auto;
 	}
 
-	/* Chiusa: si vede solo la lente */
-	.primary-navigation .sfn-menu-search input.sfn-menu-search__field {
-		padding-left: 0;
-		padding-right: 2.6em;
-		border-color: transparent;
-		background: transparent;
-		cursor: pointer;
-	}
-
-	.primary-navigation .sfn-menu-search input.sfn-menu-search__field::placeholder {
-		color: transparent;
-	}
-
+	/* Chiusa: si vede solo la lente (il campo è nascosto ma raggiungibile da tastiera) */
 	.primary-navigation .sfn-menu-search .sfn-menu-search__button {
-		right: 0.3em;
+		position: static;
+		transform: none;
+		width: 2.4em;
+		height: 2.4em;
 	}
 
-	/* Aperta: campo che si allarga verso sinistra sopra le voci */
-	.primary-navigation .sfn-menu-search.is-open .sfn-menu-search__form,
-	.primary-navigation .sfn-menu-search:focus-within .sfn-menu-search__form {
-		width: min(18rem, 80vw);
+	.primary-navigation .sfn-menu-search:not(:focus-within) input.sfn-menu-search__field {
+		position: absolute;
+		width: 1px !important;
+		height: 1px;
+		padding: 0 !important;
+		border: 0 !important;
+		opacity: 0;
+		pointer-events: none;
 	}
 
-	.primary-navigation .sfn-menu-search.is-open input.sfn-menu-search__field,
+	/*
+	 * Aperta: il campo compare sotto la lente, come un sottomenu,
+	 * così non copre le voci del menu.
+	 */
 	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field {
-		padding-left: 1.1em;
-		background: var(--sfn-surface);
-		border-color: var(--sfn-color-border);
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		right: 0;
+		width: min(18rem, 80vw) !important;
+		padding: 0.6em 1.1em !important;
+		background: var(--sfn-surface) !important;
+		border: 1px solid var(--sfn-color-border) !important;
 		box-shadow: var(--sfn-shadow);
-		cursor: text;
-	}
-
-	.primary-navigation .sfn-menu-search.is-open input.sfn-menu-search__field::placeholder,
-	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field::placeholder {
-		color: var(--sfn-color-text);
+		z-index: 88889;
 	}
 }
 
@@ -285,6 +276,137 @@ a:hover,
 		justify-content: center;
 		align-items: center;
 	}
+}
+
+/* Logo: niente contorno puntinato al clic, solo un anello visibile da tastiera */
+.site .custom-logo-link:focus,
+.site .custom-logo-link:focus img,
+.site a:focus:not(.wp-block-button__link):not(.wp-block-file__button).custom-logo-link img {
+	outline: none;
+	background: none;
+}
+
+.site .custom-logo-link:focus-visible {
+	outline: 2px solid var(--sfn-color-accent);
+	outline-offset: 4px;
+	border-radius: 6px;
+}
+
+/* Widget del footer: tante colonne quanti sono i widget mostrati (max 3) */
+@media only screen and (min-width: 652px) {
+
+	.widget-area {
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	}
+}
+
+/*
+ * Risultati di ricerca: elenco di schede compatte.
+ */
+.search .search-result-count {
+	max-width: min(calc(var(--sfn-prose-width) + 3rem), var(--responsive--alignwide-width));
+	margin: 0 auto 1.5rem;
+	font-size: var(--global--font-size-sm);
+	opacity: 0.85;
+}
+
+.search .site-main > article {
+	max-width: min(calc(var(--sfn-prose-width) + 3rem), var(--responsive--alignwide-width));
+	margin: 0 auto 1rem;
+	padding: 1.25rem 1.5rem;
+	background: var(--sfn-card-bg);
+	border-radius: 14px;
+	display: flow-root;
+}
+
+.search .site-main > article > *,
+.search .site-main > article .entry-title {
+	max-width: none;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.search .site-main > article .entry-header {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.search .site-main > article .entry-title {
+	margin: 0;
+	font-size: var(--heading--font-size-h3);
+	line-height: var(--global--line-height-heading);
+}
+
+.search .site-main > article .entry-title a {
+	text-decoration: none;
+}
+
+.search .site-main > article .entry-title a:hover,
+.search .site-main > article .entry-title a:focus {
+	text-decoration: underline;
+}
+
+.search .site-main > article .post-thumbnail {
+	float: right;
+	width: 6rem;
+	margin: 0 0 0.5rem 1rem;
+}
+
+.search .site-main > article .post-thumbnail img {
+	width: 6rem;
+	height: 6rem;
+	margin: 0;
+	padding: 0;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.search .site-main > article .post-thumbnail figcaption {
+	display: none;
+}
+
+.search .site-main > article > .entry-content {
+	margin-top: 0.5rem;
+	font-size: var(--global--font-size-sm);
+}
+
+.search .site-main > article > .entry-content p {
+	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.search .site-main > article > .entry-content:empty,
+.search .site-main > article > .entry-content p:empty {
+	display: none;
+}
+
+.search .site-main > article > .entry-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 1rem;
+	margin: 0.75rem 0 0;
+	padding: 0;
+	border: 0;
+	font-size: var(--global--font-size-xs);
+	opacity: 0.85;
+}
+
+.search .site-main > article > .entry-footer:empty {
+	display: none;
+}
+
+.search .site-main > article > .entry-footer > * {
+	margin: 0;
+}
+
+.search .pagination {
+	max-width: min(calc(var(--sfn-prose-width) + 3rem), var(--responsive--alignwide-width));
+	border-top: 1px solid var(--sfn-color-border-soft);
+	margin-top: 2rem;
 }
 
 /* Footer */

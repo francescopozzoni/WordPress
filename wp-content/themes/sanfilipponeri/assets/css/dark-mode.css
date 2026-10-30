@@ -21,6 +21,7 @@
 	--sfn-surface: #1d2632;
 	--sfn-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 	--sfn-chip-bg: rgba(143, 193, 255, 0.12);
+	--sfn-card-bg: #1d2632;
 
 	/* Bottoni: azzurro chiaro con testo scuro (9.3:1); in hover solo contorno */
 	--sfn-button-bg: #8fc1ff;

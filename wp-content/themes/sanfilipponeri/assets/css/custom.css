@@ -164,9 +164,27 @@ a:hover {
 		box-shadow: var(--sfn-shadow, 0 8px 24px rgba(0, 32, 64, 0.16));
 	}
 
-	.primary-navigation > div > .menu-wrapper > li > .sub-menu:before,
+	/* niente freccia */
 	.primary-navigation > div > .menu-wrapper > li > .sub-menu:after {
 		display: none;
+	}
+
+	/*
+	 * "Ponte" invisibile tra la voce e il sottomenu: copre lo spazio di
+	 * margin-top, così il mouse non esce dalla voce e il sottomenu resta aperto.
+	 * (.site-header: deve vincere sulla regola più in basso che nasconde le frecce.)
+	 */
+	.site-header .primary-navigation > div > .menu-wrapper > li > .sub-menu:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -0.6rem;
+		left: 0;
+		right: 0;
+		width: auto;
+		height: 0.6rem;
+		border: 0;
+		background: transparent;
 	}
 
 	.primary-navigation > div > .menu-wrapper > li > .sub-menu li {
