@@ -292,6 +292,23 @@ function sanfilipponeri_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
+		'sfn_image_lightbox',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'rest_sanitize_boolean',
+		)
+	);
+	$wp_customize->add_control(
+		'sfn_image_lightbox',
+		array(
+			'label'       => 'Immagini ingrandibili al clic',
+			'description' => 'Le immagini senza link si aprono a schermo intero al clic (nelle gallerie si può scorrere tra le immagini). Si può disattivare per una singola immagine dalla barra del blocco.',
+			'section'     => 'sanfilipponeri',
+			'type'        => 'checkbox',
+		)
+	);
+
+	$wp_customize->add_setting(
 		'sfn_footer_name',
 		array(
 			'default'           => $defaults['sfn_footer_name'],
@@ -545,3 +562,34 @@ function sanfilipponeri_hide_footer_search( $instance, $widget ) {
 	return $instance;
 }
 add_filter( 'widget_display_callback', 'sanfilipponeri_hide_footer_search', 10, 2 );
+
+/**
+ * Immagini ingrandibili: attiva per tutti i blocchi Immagine l'opzione
+ * "Ingrandisci al clic" di WordPress (lightbox), se scelto nel Customizer.
+ * Le immagini con un link non cambiano.
+ *
+ * @param WP_Theme_JSON_Data $theme_json Dati theme.json del tema.
+ * @return WP_Theme_JSON_Data
+ */
+function sanfilipponeri_image_lightbox( $theme_json ) {
+	if ( ! get_theme_mod( 'sfn_image_lightbox', true ) ) {
+		return $theme_json;
+	}
+
+	return $theme_json->update_with(
+		array(
+			'version'  => 3,
+			'settings' => array(
+				'blocks' => array(
+					'core/image' => array(
+						'lightbox' => array(
+							'enabled'      => true,
+							'allowEditing' => true,
+						),
+					),
+				),
+			),
+		)
+	);
+}
+add_filter( 'wp_theme_json_data_theme', 'sanfilipponeri_image_lightbox' );
