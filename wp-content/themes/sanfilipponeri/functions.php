@@ -401,13 +401,12 @@ function sanfilipponeri_menu_search( $items, $args ) {
 	ob_start();
 	?>
 	<li class="menu-item sfn-menu-search">
-		<button type="button" class="sfn-menu-search__toggle" aria-expanded="false" aria-controls="<?php echo esc_attr( $id ); ?>-form" aria-label="Apri la ricerca">
-			<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
-		</button>
-		<form role="search" method="get" id="<?php echo esc_attr( $id ); ?>-form" class="sfn-menu-search__form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<form role="search" method="get" class="sfn-menu-search__form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<label class="screen-reader-text" for="<?php echo esc_attr( $id ); ?>">Cerca nel sito</label>
-			<input type="search" id="<?php echo esc_attr( $id ); ?>" class="sfn-menu-search__field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Cerca nel sito…">
-			<button type="submit" class="sfn-menu-search__submit">Cerca</button>
+			<input type="search" id="<?php echo esc_attr( $id ); ?>" class="sfn-menu-search__field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Cerca…">
+			<button type="submit" class="sfn-menu-search__button" aria-label="Cerca">
+				<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
+			</button>
 		</form>
 	</li>
 	<?php
