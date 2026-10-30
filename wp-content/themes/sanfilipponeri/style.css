@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.7.0
+Version: 3.7.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -70,6 +70,17 @@ Text Domain: sanfilipponeri
 	/* Bottoni e campi */
 	--sfn-control-font-size: 1.0625rem;
 	--sfn-control-padding: 0.75em 1.6em;
+
+	/*
+	 * Stesse misure anche per i pulsanti che Twenty Twenty-One stila con
+	 * selettori più specifici (blocco File, blocco Ricerca, ecc.).
+	 */
+	--button--font-size: var(--sfn-control-font-size);
+	--button--font-weight: bold;
+	--button--line-height: 1.3;
+	--button--padding-vertical: 0.75em;
+	--button--padding-horizontal: 1.6em;
+	--button--border-radius: 999px;
 
 	--global--color-blue: #004077;
 	--global--color-primary: var(--global--color-blue);

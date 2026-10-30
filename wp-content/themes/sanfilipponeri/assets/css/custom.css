@@ -448,10 +448,10 @@ border: var(--form--border-width) solid #004077;
 .site .button:not(#primary-mobile-menu),
 .site input[type="submit"],
 .site input[type="reset"],
-.wp-block-search__button,
+.wp-block-search .wp-block-search__button,
 .search-submit,
-.wp-block-button__link,
-.wp-block-file .wp-block-file__button {
+.wp-block-button .wp-block-button__link,
+.wp-block-file a.wp-block-file__button {
 	color: var(--sfn-button-text) !important;
 	background: var(--sfn-button-bg) !important;
 	border: var(--button--border-width) solid var(--sfn-button-border) !important;
@@ -470,14 +470,14 @@ border: var(--form--border-width) solid #004077;
 .site input[type="submit"]:focus,
 .site input[type="reset"]:hover,
 .site input[type="reset"]:focus,
-.wp-block-search__button:hover,
-.wp-block-search__button:focus,
+.wp-block-search .wp-block-search__button:hover,
+.wp-block-search .wp-block-search__button:focus,
 .search-submit:hover,
 .search-submit:focus,
-.wp-block-button__link:hover,
-.wp-block-button__link:focus,
-.wp-block-file .wp-block-file__button:hover,
-.wp-block-file .wp-block-file__button:focus {
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button .wp-block-button__link:focus,
+.wp-block-file a.wp-block-file__button:hover,
+.wp-block-file a.wp-block-file__button:focus {
 	color: var(--sfn-button-text-hover) !important;
 	background: var(--sfn-button-bg-hover) !important;
 	border-color: var(--sfn-button-border-hover) !important;
