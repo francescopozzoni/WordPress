@@ -223,8 +223,46 @@ a:hover {
 		color: #fff;
 	}
 
-	.primary-navigation > div > .menu-wrapper .sub-menu-toggle svg {
+	/*
+	 * Icona di apertura: freccia bianca che punta in basso (chiuso) e ruota
+	 * verso l'alto (aperto), al posto di +/- del tema padre (che il colore di
+	 * .svg-icon rendeva blu su blu, quindi invisibili).
+	 */
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle .icon-plus,
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle .icon-minus {
+		display: none !important;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle::before {
+		content: "";
+		width: 14px;
+		height: 14px;
+		background-color: currentColor;
+		-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+		transition: transform 0.2s ease;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle[aria-expanded="true"]::before {
+		transform: rotate(180deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+
+		.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle::before {
+			transition: none;
+		}
+	}
+
+	/* Icone del pulsante Menu/Chiudi: bianche sul fondo blu del menu aperto */
+	.primary-navigation-open .menu-button-container .svg-icon {
+		color: #fff;
 		fill: currentColor;
+	}
+
+	/* Niente divisore sotto la ricerca, ultima voce del menu */
+	.primary-navigation > div > .menu-wrapper > li.sfn-menu-search {
+		border-bottom: 0;
 	}
 
 	.primary-navigation > div > .menu-wrapper > li > .sub-menu {
