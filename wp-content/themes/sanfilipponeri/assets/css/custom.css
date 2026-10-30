@@ -352,11 +352,13 @@ div.wp-block-buttons {
 
 /*
  * Testi più stretti dei blocchi multimediali, per righe di lunghezza leggibile.
+ * Anche i visualizzatori di documenti (blocco File con anteprima PDF, iframe)
+ * stanno nella stessa colonna del testo.
  * Vale per i testi diretti della pagina e per quelli dentro gruppi, contenuto
  * delle schede dello slider e altri contenitori a flusso (non nelle colonne,
  * che sono già più strette).
  */
-:is(.entry-content, [class*="inner-container"], .odn-slider-body, .is-layout-flow:not(.wp-block-column), .is-layout-constrained) > :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6, blockquote, pre, .wp-block-heading, .wp-block-list, .wp-block-quote, .wp-block-preformatted, .wp-block-verse, .wp-block-details):not(.alignwide):not(.alignfull) {
+:is(.entry-content, [class*="inner-container"], .odn-slider-body, .is-layout-flow:not(.wp-block-column), .is-layout-constrained) > :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6, blockquote, pre, .wp-block-heading, .wp-block-list, .wp-block-quote, .wp-block-preformatted, .wp-block-verse, .wp-block-details, .wp-block-file, iframe, object, embed):not(.alignwide):not(.alignfull) {
 	--sfn-content-width: min(var(--sfn-prose-width), 100%);
 	max-width: var(--sfn-content-width);
 	margin-left: auto;
@@ -628,7 +630,7 @@ div.content {
 .entry-content > iframe[style] {
    margin-left: auto !important;
 	margin-right: auto !important;
-    max-width: var(--responsive--alignwide-width) !important;
+    max-width: min(var(--sfn-prose-width), 100%) !important;
 	display: block;
 }
 
