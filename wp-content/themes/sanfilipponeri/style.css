@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.9.5
+Version: 3.9.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -376,6 +376,35 @@ a:hover,
 	outline: 2px solid var(--sfn-color-accent);
 	outline-offset: 4px;
 	border-radius: 6px;
+}
+
+/*
+ * Link cliccati: niente fondo bianco/nero e niente contorno puntinato attorno
+ * alle immagini dentro i link (icone social, immagini cliccabili), che
+ * Twenty Twenty-One mostra anche al clic del mouse. Da tastiera resta un
+ * anello continuo.
+ */
+.site a:focus:not(.wp-block-button__link):not(.wp-block-file__button),
+.is-dark-theme .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
+	background: none;
+}
+
+.is-dark-theme .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
+	color: inherit;
+}
+
+.site a:focus:not(.wp-block-button__link):not(.wp-block-file__button):not(:focus-visible) img {
+	outline: none;
+}
+
+.site a:focus-visible:not(.wp-block-button__link):not(.wp-block-file__button) img {
+	outline: 2px solid var(--sfn-color-accent);
+	outline-offset: 3px;
+}
+
+#my-footer a:focus-visible img {
+	outline-color: #fff;
+	border-radius: 50%;
 }
 
 /* Widget del footer: tante colonne quanti sono i widget mostrati (max 3) */
