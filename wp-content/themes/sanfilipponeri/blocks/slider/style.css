@@ -423,3 +423,29 @@ p.odn-p-big em {
 .wp-block-sanfilipponeri-slider a.odn-button {
 	text-decoration: none;
 }
+
+/*
+ * Dimensioni del testo fluide (al posto dei valori fissi per breakpoint qui sopra).
+ */
+p.odn-p-small {
+	font-size: clamp(1rem, 0.9rem + 0.4vw, 1.3rem) !important;
+}
+
+p.odn-p-big {
+	font-size: clamp(1.4rem, 1rem + 2vw, 2.6rem);
+	line-height: 1.25;
+}
+
+.odn-navlink {
+	font-size: clamp(1rem, 0.85rem + 0.6vw, 1.4rem);
+}
+
+#odn-bodies {
+	font-size: inherit;
+}
+
+.odn-button {
+	font-size: var(--sfn-control-font-size, 1.0625rem);
+	padding: var(--sfn-control-padding, 0.75em 1.6em);
+	line-height: 1.3;
+}

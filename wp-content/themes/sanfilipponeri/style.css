@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.1.2
+Version: 3.2.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -37,8 +37,39 @@ Text Domain: sanfilipponeri
 	--global--font-primary: var(--font-headings, GalanoB);
 	--global--font-secondary: var(--font-base, Galano);
 
+	/*
+	 * Testo e titoli: scala unica pensata per la leggibilità.
+	 * Testo base 18px, interlinea ampia, titoli fluidi (clamp) tra mobile e desktop.
+	 */
+	--global--font-size-base: 1.125rem;
+	--global--font-size-xs: 0.9375rem;
+	--global--font-size-sm: 1rem;
+	--global--font-size-md: 1.125rem;
+	--global--font-size-lg: 1.375rem;
+	--global--font-size-xl: 1.75rem;
 	--global--font-size-xxl: 2rem;
+	--global--font-size-page-title: clamp(2rem, 1.4rem + 2.5vw, 3rem);
+	--global--line-height-body: 1.65;
+	--global--line-height-heading: 1.25;
+	--global--line-height-page-title: 1.15;
+
+	--heading--font-size-h1: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+	--heading--font-size-h2: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+	--heading--font-size-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+	--heading--font-size-h4: 1.25rem;
+	--heading--font-size-h5: 1.125rem;
+	--heading--font-size-h6: 1rem;
 	--heading--font-weight-page-title: 100;
+
+	/* Larghezza massima dei testi (circa 70 caratteri per riga) */
+	--sfn-prose-width: 46rem;
+
+	/* Spazio sopra e sotto la fascia del titolo */
+	--sfn-band-padding: clamp(2rem, 1rem + 4vw, 4rem);
+
+	/* Bottoni e campi */
+	--sfn-control-font-size: 1.0625rem;
+	--sfn-control-padding: 0.75em 1.6em;
 
 	--global--color-blue: #004077;
 	--global--color-primary: var(--global--color-blue);
