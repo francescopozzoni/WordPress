@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.6.2
+Version: 3.6.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -189,7 +189,6 @@ a:hover,
 		position: relative;
 		display: flex;
 		align-items: center;
-		margin-left: calc(0.5 * var(--global--spacing-horizontal));
 		font-size: var(--global--font-size-sm);
 	}
 
@@ -198,12 +197,36 @@ a:hover,
 		width: auto;
 	}
 
-	/* Chiusa: si vede solo la lente (il campo è nascosto ma raggiungibile da tastiera) */
+	/*
+	 * Chiusa: solo la lente, senza cerchio, alta e distanziata come le altre
+	 * voci del menu (il campo è nascosto ma raggiungibile da tastiera).
+	 */
 	.primary-navigation .sfn-menu-search .sfn-menu-search__button {
 		position: static;
 		transform: none;
-		width: 2.4em;
-		height: 2.4em;
+		width: auto;
+		height: auto;
+		padding: var(--primary-nav--padding) !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		color: var(--sfn-color-link) !important;
+	}
+
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button svg {
+		width: 1.2em;
+		height: 1.2em;
+	}
+
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button:hover,
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button:focus,
+	.primary-navigation .sfn-menu-search:focus-within .sfn-menu-search__button {
+		background: transparent !important;
+		color: var(--sfn-color-accent) !important;
+	}
+
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button:focus-visible {
+		outline: 2px solid var(--sfn-color-accent);
+		outline-offset: -2px;
 	}
 
 	.primary-navigation .sfn-menu-search:not(:focus-within) input.sfn-menu-search__field {
