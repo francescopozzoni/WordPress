@@ -161,6 +161,13 @@ function sanfilipponeri_scripts() {
 
 	if ( has_nav_menu( 'primary' ) ) {
 		wp_enqueue_script(
+			'sanfilipponeri-mobile-menu',
+			get_theme_file_uri( 'assets/js/mobile-menu.js' ),
+			array(),
+			(string) filemtime( get_theme_file_path( 'assets/js/mobile-menu.js' ) ),
+			array( 'in_footer' => true )
+		);
+		wp_enqueue_script(
 			'sanfilipponeri-menu-search',
 			get_theme_file_uri( 'assets/js/menu-search.js' ),
 			array(),
