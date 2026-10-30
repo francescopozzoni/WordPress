@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.8.9
+Version: 3.9.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -525,11 +525,22 @@ a:hover,
 	text-decoration: none;
 }
 
-@media only screen and (max-width: 660px) {
+/*
+ * Mobile e tablet: barra dei social più bassa (60px), icone centrate e più
+ * vicina alla riga del copyright sottostante.
+ */
+@media only screen and (max-width: 1023.98px) {
+
+	#footer-info {
+		padding-top: 0.4rem;
+	}
 
 	#my-footer {
-		height: 80px;
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.25rem;
+		height: 60px;
 	}
 
 	#my-footer-img {
@@ -537,22 +548,31 @@ a:hover,
 	}
 
 	#my-footer-img-mobile {
-		height: 80px;
+		height: 60px;
 		position: absolute;
 		left: 0;
+		top: 0;
 		display: inline;
-		z-index: 50;
+		z-index: 0;
+	}
+
+	#my-footer a {
+		position: relative;
+		z-index: 1;
+		display: flex;
 	}
 
 	.my-footer-links {
-		height: 40px;
-		position: relative;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		padding-left: 10px;
-		padding-right: 10px;
-		z-index: 100;
+		position: static;
+		left: auto;
+		top: auto;
+		height: 32px;
+		padding: 0;
+		transform: none;
 	}
+}
+
+@media only screen and (max-width: 660px) {
 
 	#footer-info {
 		font-size: 0.8rem;
