@@ -14,6 +14,11 @@ while ( have_posts() ) :
 	the_post();
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'sfn-home' ); ?>>
+		<?php if ( sanfilipponeri_show_front_title() ) : ?>
+			<header class="entry-header alignwide">
+				<?php get_template_part( 'template-parts/header/entry-header' ); ?>
+			</header><!-- .entry-header -->
+		<?php endif; ?>
 		<div class="entry-content">
 			<?php the_content(); ?>
 		</div><!-- .entry-content -->

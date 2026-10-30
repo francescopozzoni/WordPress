@@ -78,6 +78,16 @@ function sanfilipponeri_social_links() {
 }
 
 /**
+ * Se mostrare il titolo della pagina usata come homepage (Twenty Twenty-One
+ * di norma lo nasconde). Impostazione nel Customizer, sezione "San Filippo Neri".
+ *
+ * @return bool
+ */
+function sanfilipponeri_show_front_title() {
+	return (bool) get_theme_mod( 'sfn_show_front_title', false );
+}
+
+/**
  * Stampa il nome nel footer: la seconda lettera è il link all'easter egg.
  */
 function sanfilipponeri_footer_name() {
@@ -250,6 +260,23 @@ function sanfilipponeri_customize_register( $wp_customize ) {
 			'section'     => 'sanfilipponeri',
 			'type'        => 'select',
 			'choices'     => sanfilipponeri_variants(),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'sfn_show_front_title',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'rest_sanitize_boolean',
+		)
+	);
+	$wp_customize->add_control(
+		'sfn_show_front_title',
+		array(
+			'label'       => 'Mostra il titolo nella homepage',
+			'description' => 'Mostra la fascia con il titolo della pagina anche nella homepage.',
+			'section'     => 'sanfilipponeri',
+			'type'        => 'checkbox',
 		)
 	);
 
