@@ -373,12 +373,9 @@ div.odn-slider-body {
 
 /* Lo slider occupa tutta la larghezza anche dentro .entry-content */
 .entry-content > .wp-block-sanfilipponeri-slider {
-	/* da bordo a bordo, ma al massimo --sfn-max-width sugli schermi ultra-wide */
-	max-width: var(--sfn-max-width, 90rem) !important;
+	max-width: none !important;
 	width: 100%;
 	margin-top: 0;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .odn-slider-body {
@@ -610,5 +607,24 @@ p.odn-p-big {
 		margin-top: 1.25rem;
 		margin-bottom: 1.5rem;
 		row-gap: 0.25rem;
+	}
+}
+
+/*
+ * Schermi molto larghi: lo sfondo prosegue fino ai bordi (rosso a sinistra,
+ * blu a destra), mentre grafica, puntini e testo restano entro
+ * --sfn-max-width (gli sfondi SVG sono posizionati nell'area del contenuto).
+ */
+@media screen and (min-width: 1440px) {
+
+	#odn-slider {
+		padding-left: max(0px, calc((100% - var(--sfn-max-width, 90rem)) / 2));
+		padding-right: max(0px, calc((100% - var(--sfn-max-width, 90rem)) / 2));
+		box-sizing: border-box;
+		background-image: url('sfondo-2.svg'), url('sfondo-1.svg'), linear-gradient(to right, #e42313 50%, #004077 50%);
+		background-origin: content-box, content-box, border-box;
+		background-position: 90%, left, 0 0;
+		background-size: contain, cover, auto;
+		background-repeat: no-repeat;
 	}
 }

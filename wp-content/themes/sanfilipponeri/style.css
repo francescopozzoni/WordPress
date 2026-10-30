@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.10.0
+Version: 3.10.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -558,9 +558,6 @@ a:hover,
 #my-footer {
 	height: 100px;
 	width: 100%;
-	max-width: var(--sfn-max-width);
-	margin-left: auto;
-	margin-right: auto;
 	background-color: #004077;
 	position: relative;
 	display: block;
@@ -612,6 +609,25 @@ a:hover,
 
 #footer-info .easteregg-link {
 	text-decoration: none;
+}
+
+/*
+ * Schermi molto larghi: la barra prosegue fino ai bordi (blu a sinistra,
+ * rossa a destra) ma icone e grafica restano entro --sfn-max-width.
+ */
+@media only screen and (min-width: 1024px) {
+
+	#my-footer {
+		--sfn-bleed: max(0px, calc((100% - var(--sfn-max-width)) / 2));
+		padding-left: var(--sfn-bleed);
+		padding-right: var(--sfn-bleed);
+		box-sizing: border-box;
+		background: linear-gradient(to right, #004077 calc(100% - var(--sfn-bleed) - 1px), #e42313 0);
+	}
+
+	#my-footer-img {
+		right: var(--sfn-bleed);
+	}
 }
 
 /*
