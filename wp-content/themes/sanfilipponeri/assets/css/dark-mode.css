@@ -191,3 +191,27 @@
 	outline: 2px solid var(--sfn-color-accent);
 	outline-offset: 2px;
 }
+
+/*
+ * Blocchi PostX (Ultimate Post): i titoli usano --postx_preset_Contrast_1_color
+ * (#10102e, con !important) e sarebbero invisibili sul fondo scuro.
+ * Si ridefiniscono le variabili della palette PostX: chiari per i testi,
+ * scuri per gli sfondi. (Il sito del CineTeatro ne forza alcune in
+ * variant-cineteatro.css.)
+ */
+.is-dark-theme.is-dark-theme {
+	--postx_preset_Contrast_1_color: #e3ebf5;
+	--postx_preset_Contrast_2_color: #c9d6e6;
+	--postx_preset_Contrast_3_color: #9ab0c8;
+	--postx_preset_Base_1_color: #1d2632;
+	--postx_preset_Base_2_color: #253041;
+	--postx_preset_Base_3_color: #3a4a5f;
+	--postx_preset_Primary_color: #8fc1ff;
+	--postx_preset_Secondary_color: #b5d6ff;
+	--postx_preset_Over_Primary_color: #141b24;
+}
+
+/* Titoli dei post PostX: in hover rosso chiaro come gli altri link */
+.is-dark-theme.is-dark-theme .ultp-block-content .ultp-block-title a:hover {
+	color: var(--sfn-color-accent) !important;
+}
