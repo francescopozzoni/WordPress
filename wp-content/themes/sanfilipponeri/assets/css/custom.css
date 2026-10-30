@@ -1052,6 +1052,25 @@ div.tickera_additional_info h3:before {
 		padding-right: var(--sfn-gutter) !important;
 	}
 
+	/*
+	 * Stesso margine per ciò che sta fuori dal contenuto: metadati e piè degli
+	 * articoli, commenti, navigazione, paginazione, risultati di ricerca.
+	 * (Le fasce dei titoli restano da bordo a bordo.)
+	 */
+	.site-main > article > :not(.entry-header):not(.entry-content),
+	.site-main > :not(article):not(.page-header),
+	.search .site-main > article {
+		margin-left: var(--sfn-gutter) !important;
+		margin-right: var(--sfn-gutter) !important;
+	}
+
+	/* Piè dell'articolo: meno spazio sopra e sotto (Twenty Twenty-One: 102px) */
+	.single .site-main > article > .entry-footer {
+		margin-top: calc(1.5 * var(--global--spacing-vertical));
+		margin-bottom: 0;
+		padding-top: 1rem;
+	}
+
 	.entry-content > .wp-block-sanfilipponeri-slider {
 		width: calc(100% + 2 * var(--sfn-gutter)) !important;
 		margin-left: calc(-1 * var(--sfn-gutter)) !important;
