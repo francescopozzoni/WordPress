@@ -146,8 +146,69 @@ a:hover {
 		padding-right: 30px;
 }
 
-.sub-menu-toggle {
-	display: none !important;
+/* desktop: i sottomenu si aprono al passaggio del mouse, niente pulsanti +/- */
+@media only screen and (min-width: 482px) {
+	.sub-menu-toggle {
+		display: none !important;
+	}
+}
+
+/*
+ * MENU MOBILE (sotto i 482px)
+ * - sta sopra a tutto il resto della pagina (footer compreso)
+ * - i sottomenu sono chiusi e si aprono con il pulsante + accanto alla voce
+ * - voce corrente bianca sottolineata (il rosso sul blu non si legge)
+ */
+@media only screen and (max-width: 481.98px) {
+
+	.primary-navigation-open .primary-navigation {
+		z-index: 9999;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li.menu-item-has-children {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li.menu-item-has-children > a {
+		flex: 1 1 auto;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle {
+		display: flex;
+		flex: 0 0 44px;
+		color: #fff;
+	}
+
+	.primary-navigation > div > .menu-wrapper .sub-menu-toggle svg {
+		fill: currentColor;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu {
+		flex-basis: 100%;
+		margin-left: 0;
+		padding-left: var(--global--spacing-horizontal);
+		border-left: 2px solid rgba(255, 255, 255, 0.25);
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle[aria-expanded="false"] ~ .sub-menu {
+		display: none;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	.primary-navigation .primary-menu-container .current-menu-item > a,
+	.primary-navigation .primary-menu-container .current_page_item > a,
+	.primary-navigation .primary-menu-container .current-menu-item > a:first-child,
+	.primary-navigation .primary-menu-container .current_page_item > a:first-child {
+		color: #fff !important;
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 5px;
+	}
 }
 
 /* sottomenu: niente bordo né freccia, riquadro arrotondato con ombra leggera */
