@@ -302,7 +302,7 @@ function sanfilipponeri_customize_register( $wp_customize ) {
 		'sfn_image_lightbox',
 		array(
 			'label'       => 'Immagini ingrandibili al clic',
-			'description' => 'Le immagini senza link si aprono a schermo intero al clic (nelle gallerie si può scorrere tra le immagini). Si può disattivare per una singola immagine dalla barra del blocco.',
+			'description' => 'Su computer le immagini senza link si aprono a schermo intero al clic (nelle gallerie si può scorrere tra le immagini); su telefono e tablet no. Si può disattivare per una singola immagine dalla barra del blocco.',
 			'section'     => 'sanfilipponeri',
 			'type'        => 'checkbox',
 		)

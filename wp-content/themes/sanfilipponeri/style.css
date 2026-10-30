@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.13.2
+Version: 3.13.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -579,6 +579,22 @@ a:hover,
 /* l'icona di WordPress ha il bianco fisso: segue il colore del pulsante */
 .wp-lightbox-container button.lightbox-trigger svg path {
 	fill: currentColor;
+}
+
+/*
+ * Telefono, tablet e schermi touch: niente apertura a schermo intero al tocco
+ * (l'immagine non è cliccabile e il pulsante "ingrandisci" è nascosto).
+ */
+@media (max-width: 1023.98px), (hover: none) {
+
+	.wp-lightbox-container img {
+		pointer-events: none;
+		cursor: auto;
+	}
+
+	.wp-lightbox-container button.lightbox-trigger {
+		display: none !important;
+	}
 }
 
 /* Footer */
