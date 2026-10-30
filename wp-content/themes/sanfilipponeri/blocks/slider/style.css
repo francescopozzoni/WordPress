@@ -555,3 +555,8 @@ p.odn-p-big {
 		--odn-deco-width: 225px; /* altezza 400px */
 	}
 }
+
+/* Niente margine sopra lo slider: lo spazio dall'header lo dà già la pagina */
+#odn-slider {
+	margin-top: 0;
+}

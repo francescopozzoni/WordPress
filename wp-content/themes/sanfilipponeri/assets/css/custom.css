@@ -197,6 +197,11 @@ a:hover {
     padding-bottom: 20px;
 }
 
+/* meno spazio tra header e contenuto (Twenty Twenty-One: 30px) */
+.site-main {
+	padding-top: calc(0.5 * var(--global--spacing-vertical));
+}
+
 /* spazio tra i blocchi principali della pagina (Twenty Twenty-One: 90px) */
 .site-main > * {
 	margin-top: calc(1.5 * var(--global--spacing-vertical));
