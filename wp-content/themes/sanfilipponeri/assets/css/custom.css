@@ -646,3 +646,151 @@ div.tickera_additional_info h3:before {
 .category-nembro-giovane .post-thumbnail {
   display: none;
 }
+
+/******** ELENCHI DI ARTICOLI ********/
+/*
+ * Blocco "Ultimi articoli" e elenchi Display Posts con riassunto: schede
+ * compatte come nei risultati di ricerca (titolo, data in piccolo, riassunto
+ * di massimo 3 righe, "Continua a leggere" discreto).
+ * Nel footer restano semplici elenchi.
+ */
+.entry-content .wp-block-latest-posts,
+.entry-content .display-posts-listing:has(.excerpt) {
+	display: grid;
+	gap: 1rem;
+	padding: 0;
+	list-style: none;
+}
+
+.entry-content .wp-block-latest-posts.is-grid {
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.entry-content .wp-block-latest-posts > li,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item {
+	margin: 0;
+	padding: 1.25rem 1.5rem;
+	background: var(--sfn-card-bg);
+	border: 0;
+	border-radius: 14px;
+	width: auto;
+	display: flow-root;
+}
+
+/* Titolo */
+.entry-content .wp-block-latest-posts > li > a.wp-block-latest-posts__post-title,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item > a.title {
+	display: block;
+	margin: 0;
+	font-family: var(--global--font-primary);
+	font-size: var(--heading--font-size-h3);
+	font-weight: normal;
+	line-height: var(--global--line-height-heading);
+	text-decoration: none;
+	white-space: normal;
+	text-transform: none;
+}
+
+.entry-content .wp-block-latest-posts > li > a.wp-block-latest-posts__post-title:hover,
+.entry-content .wp-block-latest-posts > li > a.wp-block-latest-posts__post-title:focus,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item > a.title:hover,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item > a.title:focus {
+	text-decoration: underline;
+}
+
+/* Data e autore: piccoli e attenuati */
+.entry-content .wp-block-latest-posts .wp-block-latest-posts__post-date,
+.entry-content .wp-block-latest-posts .wp-block-latest-posts__post-author,
+.entry-content .display-posts-listing .listing-item .date,
+.entry-content .display-posts-listing .listing-item .author {
+	display: block;
+	margin: 0.35rem 0 0;
+	font-size: var(--global--font-size-xs);
+	color: var(--sfn-color-text);
+	opacity: 0.75;
+}
+
+/* Riassunto: massimo 3 righe */
+.entry-content .wp-block-latest-posts .wp-block-latest-posts__post-excerpt,
+.entry-content .display-posts-listing:has(.excerpt) .excerpt {
+	margin: 0.6rem 0 0;
+	padding: 0;
+	font-size: var(--global--font-size-sm);
+	line-height: var(--global--line-height-body);
+}
+
+.entry-content .wp-block-latest-posts .wp-block-latest-posts__post-excerpt,
+.entry-content .display-posts-listing:has(.excerpt) .excerpt {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* "Continua a leggere": nascosto, tutta la scheda porta già all'articolo */
+.entry-content .wp-block-latest-posts .more-link,
+.entry-content .display-posts-listing .excerpt .more-link {
+	display: none;
+}
+
+/* Immagine in evidenza: piccola, arrotondata, a destra */
+.entry-content .wp-block-latest-posts:not(.is-grid) .wp-block-latest-posts__featured-image,
+.entry-content .display-posts-listing:has(.excerpt) .listing-item > .image {
+	float: right;
+	width: 6rem;
+	margin: 0 0 0.5rem 1rem;
+}
+
+.entry-content .wp-block-latest-posts .wp-block-latest-posts__featured-image img,
+.entry-content .display-posts-listing:has(.excerpt) .listing-item > .image img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	margin: 0;
+	padding: 0;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.entry-content .wp-block-latest-posts.is-grid .wp-block-latest-posts__featured-image {
+	margin: -1.25rem -1.5rem 1rem;
+}
+
+.entry-content .wp-block-latest-posts.is-grid .wp-block-latest-posts__featured-image img {
+	aspect-ratio: 16 / 9;
+	border-radius: 14px 14px 0 0;
+}
+
+/* Tutta la scheda è cliccabile tramite il titolo */
+.entry-content .wp-block-latest-posts > li,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item {
+	position: relative;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.entry-content .wp-block-latest-posts > li > a.wp-block-latest-posts__post-title::after,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item > a.title::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 14px;
+}
+
+.entry-content .wp-block-latest-posts > li:hover,
+.entry-content .display-posts-listing:has(.excerpt) > .listing-item:hover {
+	box-shadow: var(--sfn-shadow);
+	transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.entry-content .wp-block-latest-posts > li,
+	.entry-content .display-posts-listing:has(.excerpt) > .listing-item {
+		transition: none;
+	}
+
+	.entry-content .wp-block-latest-posts > li:hover,
+	.entry-content .display-posts-listing:has(.excerpt) > .listing-item:hover {
+		transform: none;
+	}
+}
