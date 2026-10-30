@@ -372,3 +372,93 @@ function sanfilipponeri_migrate_from_previous_theme( $old_name, $old_theme = nul
 	update_option( 'sanfilipponeri_migrated', $old_stylesheet, false );
 }
 add_action( 'after_switch_theme', 'sanfilipponeri_migrate_from_previous_theme', 10, 2 );
+
+/**
+ * Aggiunge la ricerca in fondo al menu principale: su desktop sta a fianco
+ * delle voci, su mobile compare dentro il menu aperto.
+ *
+ * @param string   $items Voci del menu.
+ * @param stdClass $args  Argomenti di wp_nav_menu().
+ * @return string
+ */
+function sanfilipponeri_menu_search( $items, $args ) {
+	if ( empty( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+		return $items;
+	}
+
+	$id = wp_unique_id( 'sfn-menu-search-' );
+
+	ob_start();
+	?>
+	<li class="menu-item sfn-menu-search">
+		<form role="search" method="get" class="sfn-menu-search__form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<label class="screen-reader-text" for="<?php echo esc_attr( $id ); ?>">Cerca nel sito</label>
+			<input type="search" id="<?php echo esc_attr( $id ); ?>" class="sfn-menu-search__field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Cerca…">
+			<button type="submit" class="sfn-menu-search__button" aria-label="Cerca">
+				<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
+			</button>
+		</form>
+	</li>
+	<?php
+	return $items . ob_get_clean();
+}
+add_filter( 'wp_nav_menu_items', 'sanfilipponeri_menu_search', 10, 2 );
+
+/**
+ * Elenco delle categorie (widget classico): solo le 10 più usate.
+ *
+ * @param array $args Argomenti di wp_list_categories().
+ * @return array
+ */
+function sanfilipponeri_limit_categories( $args ) {
+	$taxonomies = isset( $args['taxonomy'] ) ? (array) $args['taxonomy'] : array( 'category' );
+	if ( ! in_array( 'category', $taxonomies, true ) ) {
+		return $args;
+	}
+
+	// Elenco piatto: le etichette non mostrano la gerarchia.
+	return array_merge(
+		$args,
+		array(
+			'orderby'      => 'count',
+			'order'        => 'DESC',
+			'number'       => 10,
+			'hierarchical' => false,
+		)
+	);
+}
+add_filter( 'widget_categories_args', 'sanfilipponeri_limit_categories' );
+
+/**
+ * Stesso limite per il blocco "Categorie" (widget a blocchi), che non ha un
+ * filtro dedicato: si applica solo mentre il blocco viene generato.
+ *
+ * @param array $args Argomenti di get_terms().
+ * @return array
+ */
+function sanfilipponeri_limit_category_terms( $args ) {
+	return sanfilipponeri_limit_categories( $args );
+}
+
+/**
+ * @param string|null $pre_render Contenuto già generato (null = genera normalmente).
+ * @param array       $block      Blocco da generare.
+ * @return string|null
+ */
+function sanfilipponeri_before_categories_block( $pre_render, $block ) {
+	if ( 'core/categories' === $block['blockName'] && empty( $block['attrs']['displayAsDropdown'] ) ) {
+		add_filter( 'get_terms_args', 'sanfilipponeri_limit_category_terms' );
+	}
+	return $pre_render;
+}
+add_filter( 'pre_render_block', 'sanfilipponeri_before_categories_block', 10, 2 );
+
+/**
+ * @param string $content Blocco generato.
+ * @return string
+ */
+function sanfilipponeri_after_categories_block( $content ) {
+	remove_filter( 'get_terms_args', 'sanfilipponeri_limit_category_terms' );
+	return $content;
+}
+add_filter( 'render_block_core/categories', 'sanfilipponeri_after_categories_block' );

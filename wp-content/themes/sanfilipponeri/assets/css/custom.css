@@ -150,22 +150,109 @@ a:hover {
 	display: none !important;
 }
 
-.primary-navigation .sub-menu {
-    border: 1px solid var(--sfn-color-border);
-}
-
-@media only screen and (max-width: 480px) {
+/* sottomenu: niente bordo né freccia, riquadro arrotondato con ombra leggera */
 .primary-navigation .sub-menu {
     border: none;
 }
+
+@media only screen and (min-width: 482px) {
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu {
+		margin-top: 0.5rem;
+		padding: 0.4rem 0;
+		background: var(--sfn-surface, #fff);
+		border-radius: 12px;
+		box-shadow: var(--sfn-shadow, 0 8px 24px rgba(0, 32, 64, 0.16));
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu:before,
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu:after {
+		display: none;
+	}
+
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu li {
+		background: transparent;
+	}
 }
 
 /******** PADDINGS **********/
 .site-header {
     padding-bottom: 20px;
 }
+
+/* spazio tra i blocchi principali della pagina (Twenty Twenty-One: 90px) */
+.site-main > * {
+	margin-top: calc(1.5 * var(--global--spacing-vertical));
+	margin-bottom: calc(1.5 * var(--global--spacing-vertical));
+}
+
+.site-main > article > .entry-footer {
+	margin-top: var(--global--spacing-vertical);
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/* widget del footer: separati dal contenuto da una linea sottile */
 .widget-area {
-    margin-top: 0;
+    margin-top: calc(2 * var(--global--spacing-vertical));
+    padding-top: calc(1.5 * var(--global--spacing-vertical));
+    border-top: 1px solid var(--sfn-color-border-soft, rgba(0, 64, 119, 0.15));
+}
+
+.widget-area .widget-title,
+.widget-area .wp-block-heading {
+	font-size: var(--global--font-size-sm);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 0.75rem;
+}
+
+.widget-area ul li {
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	line-height: 1.4;
+}
+
+/* categorie come etichette compatte */
+.widget_categories ul,
+.widget-area .wp-block-categories-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding: 0;
+	list-style: none;
+}
+
+.widget_categories ul li,
+.widget-area .wp-block-categories-list li {
+	margin: 0;
+}
+
+.widget_categories ul li a,
+.widget-area .wp-block-categories-list li a {
+	display: inline-block;
+	padding: 0.25em 0.8em;
+	border-radius: 999px;
+	background: var(--sfn-chip-bg, rgba(0, 64, 119, 0.08));
+	font-size: var(--global--font-size-xs);
+	text-decoration: none;
+}
+
+.widget_categories ul li a:hover,
+.widget-area .wp-block-categories-list li a:hover {
+	text-decoration: underline;
+}
+
+/* ricerca nei widget: campo e pulsante sulla stessa riga */
+.widget-area .search-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding-right: 0;
+}
+
+.widget-area .search-form .search-field {
+	flex: 1 1 10rem;
+	min-width: 0;
 }
 
 

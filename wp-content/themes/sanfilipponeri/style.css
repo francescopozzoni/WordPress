@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.2.1
+Version: 3.3.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -83,6 +83,10 @@ Text Domain: sanfilipponeri
 	--sfn-color-link: #004077;
 	--sfn-color-accent: #e42313;
 	--sfn-color-border: #004077;
+	--sfn-color-border-soft: rgba(0, 64, 119, 0.15);
+	--sfn-surface: #fff;
+	--sfn-shadow: 0 8px 24px rgba(0, 32, 64, 0.16);
+	--sfn-chip-bg: rgba(0, 64, 119, 0.08);
 
 	/* Bottoni (stile del pulsante "Cerca") */
 	--sfn-button-bg: #004077;
@@ -116,6 +120,88 @@ a:hover,
 .comments-pagination .nav-links > *:not(.dots):not(.current):hover,
 .widget a:hover {
 	text-decoration-style: solid;
+}
+
+/*
+ * Ricerca nel menu principale (aggiunta da sanfilipponeri_menu_search()).
+ */
+.primary-navigation .sfn-menu-search {
+	display: flex;
+	align-items: center;
+	margin-left: var(--global--spacing-horizontal);
+}
+
+.sfn-menu-search__form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.primary-navigation .sfn-menu-search input.sfn-menu-search__field,
+.primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
+	width: 12rem;
+	margin: 0;
+	padding: 0.45em 2.75em 0.45em 1.1em;
+	font-size: var(--global--font-size-sm);
+	line-height: 1.3;
+	color: var(--sfn-color-text);
+	background: var(--sfn-surface);
+	border: 1px solid var(--sfn-color-border-soft);
+	border-radius: 999px;
+	transition: width 0.2s ease, border-color 0.2s ease;
+}
+
+.primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
+	width: 16rem;
+	border-color: var(--sfn-color-border);
+}
+
+.sfn-menu-search__field::placeholder {
+	color: var(--sfn-color-text);
+	opacity: 0.6;
+}
+
+.primary-navigation .sfn-menu-search .sfn-menu-search__button {
+	position: absolute;
+	right: 0.3em;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+	height: 2em;
+	min-width: 0;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	background: var(--sfn-button-bg) !important;
+	color: var(--sfn-button-text) !important;
+	cursor: pointer;
+}
+
+.primary-navigation .sfn-menu-search .sfn-menu-search__button:hover,
+.primary-navigation .sfn-menu-search .sfn-menu-search__button:focus {
+	background: var(--sfn-color-accent) !important;
+	color: #fff !important;
+}
+
+/* Mobile: dentro il menu aperto, a tutta larghezza */
+@media only screen and (max-width: 481.98px) {
+
+	.primary-navigation .sfn-menu-search {
+		margin: var(--global--spacing-vertical) 0 0;
+		padding: 0 var(--global--spacing-horizontal);
+	}
+
+	.primary-navigation .sfn-menu-search input.sfn-menu-search__field,
+	.primary-navigation .sfn-menu-search input.sfn-menu-search__field:focus {
+		width: 100%;
+		font-size: var(--global--font-size-md);
+		padding-top: 0.6em;
+		padding-bottom: 0.6em;
+	}
 }
 
 /* Footer */
