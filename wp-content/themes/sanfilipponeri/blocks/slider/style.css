@@ -560,3 +560,52 @@ p.odn-p-big {
 #odn-slider {
 	margin-top: 0;
 }
+
+/*
+ * Telefono: slider più compatto, testo meno rientrato, voci delle schede
+ * più piccole e vicine.
+ */
+@media screen and (max-width: 700px) {
+
+	#odn-slider {
+		height: auto;
+		min-height: 280px;
+		padding: 2.5rem 0;
+		box-sizing: border-box;
+	}
+
+	#odn-dot-container {
+		margin-left: 1rem;
+	}
+
+	#odn-slide-container {
+		flex: 1 1 auto;
+		width: auto;
+		margin-left: 1rem;
+		margin-right: 1.25rem;
+	}
+
+	p.odn-p-big {
+		font-size: clamp(1.3rem, 1rem + 2vw, 1.6rem);
+		padding-bottom: 0.25rem;
+	}
+
+	p.odn-p-small {
+		font-size: 1rem !important;
+		margin-bottom: 0.25rem;
+	}
+
+	.odn-navlink {
+		font-size: 0.9375rem;
+		padding-top: 0.15rem;
+		padding-bottom: 0.6rem;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+	}
+
+	#odn-navlinks {
+		margin-top: 1.25rem;
+		margin-bottom: 1.5rem;
+		row-gap: 0.25rem;
+	}
+}
