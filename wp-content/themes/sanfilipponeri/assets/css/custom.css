@@ -254,6 +254,30 @@ a:hover {
 		}
 	}
 
+	/*
+	 * Pulsante del menu: solo l'icona (hamburger per aprire, X per chiudere).
+	 * Le scritte "Menu"/"Chiudi" restano per i lettori di schermo (font-size: 0).
+	 */
+	.menu-button-container #primary-mobile-menu {
+		align-items: center;
+		justify-content: center;
+		min-width: 44px;
+		min-height: 44px;
+		padding: 0.5rem;
+	}
+
+	.menu-button-container #primary-mobile-menu .dropdown-icon {
+		font-size: 0;
+	}
+
+	.menu-button-container #primary-mobile-menu .dropdown-icon .svg-icon {
+		width: 28px;
+		height: 28px;
+		margin-left: 0;
+		top: 0;
+		fill: currentColor;
+	}
+
 	/* Icone del pulsante Menu/Chiudi: bianche sul fondo blu del menu aperto */
 	.primary-navigation-open .menu-button-container .svg-icon {
 		color: #fff;
