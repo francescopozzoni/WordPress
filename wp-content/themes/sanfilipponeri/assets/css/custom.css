@@ -31,13 +31,55 @@ body {
 	}
 }
 
-@media only screen and (max-width: 480px) {
-.site-branding {
-    color: var(--branding--color-text);
-    margin-right: 140px;
-    position: absolute;
-    top: 6.5px;
-}
+/*
+ * Header mobile: una sola riga compatta, logo a sinistra e pulsante "Menu"
+ * a destra, centrati in altezza.
+ */
+@media only screen and (max-width: 481.98px) {
+
+	.site-header {
+		position: relative;
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		row-gap: 0;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+
+	.site-header .site-branding {
+		position: static;
+		margin: 0;
+		color: var(--branding--color-text);
+	}
+
+	.site-header .site-logo,
+	.site-header > .site-logo {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		text-align: left;
+	}
+
+	.site-header .site-logo .custom-logo {
+		max-height: 44px;
+		width: auto;
+		margin: 0;
+	}
+
+	body:not(.primary-navigation-open) .site-header .primary-navigation {
+		top: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+	}
+
+	body:not(.primary-navigation-open) .site-header .menu-button-container {
+		position: static;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 }
 
 /********* MOBILE MENU **********/
@@ -859,5 +901,30 @@ div.tickera_additional_info h3:before {
 	.entry-content .wp-block-latest-posts > li:hover,
 	.entry-content .display-posts-listing:has(.excerpt) > .listing-item:hover {
 		transform: none;
+	}
+}
+
+/*
+ * Footer mobile: niente area widget vuota (su mobile "Ultimi post" e
+ * "Categorie" sono nascosti), meno spazio sopra la fascia blu e la riga del
+ * copyright lontana dal pulsante della modalità scura.
+ */
+@media only screen and (max-width: 481.98px) {
+
+	.widget-area:not(:has(.widget:not(#recent-posts-2):not(#categories-2))) {
+		display: none;
+	}
+
+	.site-main {
+		padding-bottom: calc(0.5 * var(--global--spacing-vertical));
+	}
+
+	.site-footer {
+		padding-top: calc(0.5 * var(--global--spacing-vertical));
+	}
+
+	#footer-info {
+		padding: 0.75rem 4.25rem 1rem;
+		line-height: 1.5;
 	}
 }
