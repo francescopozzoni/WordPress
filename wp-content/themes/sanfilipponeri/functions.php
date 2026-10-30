@@ -155,6 +155,16 @@ function sanfilipponeri_scripts() {
 		$version
 	);
 	wp_enqueue_style( 'sanfilipponeri-dark-mode', get_theme_file_uri( 'assets/css/dark-mode.css' ), array( 'sanfilipponeri-variant' ), $version );
+
+	if ( has_nav_menu( 'primary' ) ) {
+		wp_enqueue_script(
+			'sanfilipponeri-menu-search',
+			get_theme_file_uri( 'assets/js/menu-search.js' ),
+			array(),
+			(string) filemtime( get_theme_file_path( 'assets/js/menu-search.js' ) ),
+			array( 'in_footer' => true )
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'sanfilipponeri_scripts', 20 );
 
@@ -462,3 +472,28 @@ function sanfilipponeri_after_categories_block( $content ) {
 	return $content;
 }
 add_filter( 'render_block_core/categories', 'sanfilipponeri_after_categories_block' );
+
+/**
+ * La ricerca ora è nel menu: nei widget del footer non viene più mostrata
+ * (né il widget "Cerca" classico né un widget a blocchi con il blocco Ricerca).
+ *
+ * @param array|false $instance Impostazioni del widget.
+ * @param WP_Widget   $widget   Widget.
+ * @return array|false
+ */
+function sanfilipponeri_hide_footer_search( $instance, $widget ) {
+	if ( ! is_array( $instance ) ) {
+		return $instance;
+	}
+
+	if ( 'search' === $widget->id_base ) {
+		return false;
+	}
+
+	if ( 'block' === $widget->id_base && ! empty( $instance['content'] ) && has_block( 'core/search', $instance['content'] ) ) {
+		return false;
+	}
+
+	return $instance;
+}
+add_filter( 'widget_display_callback', 'sanfilipponeri_hide_footer_search', 10, 2 );
