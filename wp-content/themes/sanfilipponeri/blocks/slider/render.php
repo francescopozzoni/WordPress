@@ -56,7 +56,13 @@ echo get_block_wrapper_attributes( // phpcs:ignore WordPress.Security.EscapeOutp
 						<p class="odn-p-big"><?php echo wp_kses_post( $sanfilipponeri_attrs['title'] ); ?></p>
 					<?php endif; ?>
 					<?php if ( ! empty( $sanfilipponeri_attrs['buttonText'] ) ) : ?>
-						<p><button type="button" class="odn-button"><?php echo wp_kses_post( $sanfilipponeri_attrs['buttonText'] ); ?></button></p>
+						<p>
+							<?php if ( ! empty( $sanfilipponeri_attrs['buttonUrl'] ) ) : ?>
+								<a class="odn-button" href="<?php echo esc_url( $sanfilipponeri_attrs['buttonUrl'] ); ?>"<?php echo empty( $sanfilipponeri_attrs['buttonNewTab'] ) ? '' : ' target="_blank" rel="noopener"'; ?>><?php echo wp_kses_post( $sanfilipponeri_attrs['buttonText'] ); ?></a>
+							<?php else : ?>
+								<button type="button" class="odn-button"><?php echo wp_kses_post( $sanfilipponeri_attrs['buttonText'] ); ?></button>
+							<?php endif; ?>
+						</p>
 					<?php endif; ?>
 				</div>
 			<?php endforeach; ?>

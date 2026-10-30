@@ -402,3 +402,24 @@ p.odn-p-big em {
 	font-family: Galano;
 	font-style: italic !important;
 }
+
+/*
+ * Dentro .entry-content valgono le regole generali della pagina
+ * (img larghe 100%, paragrafi e link blu): qui vanno annullate.
+ */
+.wp-block-sanfilipponeri-slider #odn-arrow-container img {
+	width: 80px;
+	max-width: none;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.wp-block-sanfilipponeri-slider .odn-slide p,
+.wp-block-sanfilipponeri-slider .odn-slide a:not(.odn-button) {
+	color: #fff;
+}
+
+.wp-block-sanfilipponeri-slider a.odn-button {
+	text-decoration: none;
+}

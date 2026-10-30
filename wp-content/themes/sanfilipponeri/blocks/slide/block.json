@@ -2,10 +2,13 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "sanfilipponeri/slide",
+	"version": "3.0.1",
 	"title": "Scheda dello slider",
 	"category": "design",
 	"icon": "excerpt-view",
-	"parent": [ "sanfilipponeri/slider" ],
+	"parent": [
+		"sanfilipponeri/slider"
+	],
 	"description": "Una scheda dello slider: testi del riquadro blu, voce della barra di navigazione e contenuto mostrato sotto.",
 	"textdomain": "sanfilipponeri",
 	"supports": {
@@ -28,6 +31,14 @@
 		"buttonText": {
 			"type": "string",
 			"default": ""
+		},
+		"buttonUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonNewTab": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"editorScript": "file:./editor.js",

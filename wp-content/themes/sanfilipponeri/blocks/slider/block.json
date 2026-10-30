@@ -2,16 +2,24 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "sanfilipponeri/slider",
+	"version": "3.0.1",
 	"title": "Slider a schede",
 	"category": "design",
 	"icon": "slides",
 	"description": "Slider della homepage: ogni scheda ha un titolo nel riquadro blu, un link nella barra di navigazione e un contenuto libero sotto.",
-	"keywords": [ "slider", "home", "schede", "oratorio" ],
+	"keywords": [
+		"slider",
+		"home",
+		"schede",
+		"oratorio"
+	],
 	"textdomain": "sanfilipponeri",
 	"supports": {
 		"html": false,
 		"multiple": false,
-		"align": [ "full" ]
+		"align": [
+			"full"
+		]
 	},
 	"attributes": {
 		"align": {

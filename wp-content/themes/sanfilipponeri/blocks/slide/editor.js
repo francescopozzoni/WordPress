@@ -34,6 +34,27 @@
 							},
 							__nextHasNoMarginBottom: true,
 						} )
+					),
+					el(
+						components.PanelBody,
+						{ title: 'Pulsante' },
+						el( 'p', { className: 'components-base-control__help' }, 'Cerca una pagina o un articolo, oppure incolla un indirizzo. Se lasci vuoto, il pulsante porta al contenuto della scheda.' ),
+						el( blockEditor.URLInput, {
+							label: 'Link del pulsante',
+							value: attributes.buttonUrl,
+							onChange: function ( value ) {
+								setAttributes( { buttonUrl: value } );
+							},
+							__nextHasNoMarginBottom: true,
+						} ),
+						el( components.ToggleControl, {
+							label: 'Apri in una nuova scheda',
+							checked: attributes.buttonNewTab,
+							onChange: function ( value ) {
+								setAttributes( { buttonNewTab: value } );
+							},
+							__nextHasNoMarginBottom: true,
+						} )
 					)
 				),
 				el( RichText, {
@@ -78,7 +99,14 @@
 						onChange: function ( value ) {
 							setAttributes( { buttonText: value } );
 						},
-					} )
+					} ),
+					el(
+						'p',
+						{ className: 'sfn-slide-editor__link' },
+						attributes.buttonUrl
+							? 'Link: ' + attributes.buttonUrl
+							: 'Nessun link: il pulsante porta al contenuto della scheda (impostalo nella barra laterale → Pulsante)'
+					)
 				),
 				el( 'div', innerBlocksProps )
 			);

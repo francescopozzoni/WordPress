@@ -58,3 +58,10 @@
 	font-weight: bold;
 	color: #e42313;
 }
+
+.sfn-slide-editor__hero .sfn-slide-editor__link {
+	color: #fff;
+	opacity: 0.8;
+	font-size: 0.8em;
+	margin: 0.8em 0 0;
+}

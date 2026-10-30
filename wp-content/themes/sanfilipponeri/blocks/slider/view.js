@@ -62,7 +62,8 @@
 				show( parseInt( target.getAttribute( 'data-index' ), 10 ) + 1 );
 				return;
 			}
-			if ( event.target.closest( '.odn-button' ) && bodiesContainer ) {
+			// Pulsante senza link: scorre al contenuto della scheda.
+			if ( event.target.closest( 'button.odn-button' ) && bodiesContainer ) {
 				bodiesContainer.scrollIntoView( { behavior: 'smooth' } );
 			}
 		} );
