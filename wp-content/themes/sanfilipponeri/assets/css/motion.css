@@ -1,0 +1,233 @@
+/**
+ * Interazioni: piccoli movimenti in hover e animazioni di comparsa, senza
+ * cambiare l'aspetto a riposo. Tutto è disattivato per chi ha chiesto al
+ * sistema di ridurre il movimento.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+
+	/* ---------- Transizioni di base ---------- */
+
+	a {
+		transition: color 0.15s ease, text-underline-offset 0.15s ease, text-decoration-color 0.15s ease;
+	}
+
+	.entry-content a:not(.wp-block-button__link):not(.wp-block-file__button):hover {
+		text-underline-offset: 5px;
+	}
+
+	/* ---------- Pulsanti: leggero sollevamento, "pressione" al clic ---------- */
+
+	.site .button:not(#primary-mobile-menu),
+	.site input[type="submit"],
+	.site input[type="reset"],
+	.wp-block-search .wp-block-search__button,
+	.search-submit,
+	.wp-block-button .wp-block-button__link,
+	.wp-block-file a.wp-block-file__button,
+	.odn-button {
+		transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.site .button:not(#primary-mobile-menu):hover,
+	.site input[type="submit"]:hover,
+	.site input[type="reset"]:hover,
+	.wp-block-search .wp-block-search__button:hover,
+	.search-submit:hover,
+	.wp-block-button .wp-block-button__link:hover,
+	.wp-block-file a.wp-block-file__button:hover,
+	.odn-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 32, 64, 0.18);
+	}
+
+	.site .button:not(#primary-mobile-menu):active,
+	.site input[type="submit"]:active,
+	.site input[type="reset"]:active,
+	.wp-block-search .wp-block-search__button:active,
+	.search-submit:active,
+	.wp-block-button .wp-block-button__link:active,
+	.wp-block-file a.wp-block-file__button:active,
+	.odn-button:active {
+		transform: translateY(0) scale(0.97);
+		box-shadow: none;
+	}
+
+	/* ---------- Immagini cliccabili: zoom dentro la cornice ---------- */
+
+	.wp-block-image a,
+	.wp-block-gallery .wp-block-image a,
+	.post-thumbnail a,
+	.wp-block-latest-posts__featured-image a,
+	.display-posts-listing .listing-item > a.image,
+	.ultp-block-image a {
+		display: block;
+		overflow: hidden;
+		border-radius: inherit;
+	}
+
+	.wp-block-image a img,
+	.post-thumbnail a img,
+	.wp-block-latest-posts__featured-image img,
+	.display-posts-listing .listing-item > a.image img,
+	.ultp-block-image a img {
+		transition: transform 0.4s ease, filter 0.4s ease;
+	}
+
+	.wp-block-image a:hover img,
+	.post-thumbnail a:hover img,
+	.wp-block-latest-posts > li:hover .wp-block-latest-posts__featured-image img,
+	.display-posts-listing .listing-item:hover > a.image img,
+	.ultp-block-item:hover .ultp-block-image a img {
+		transform: scale(1.04);
+	}
+
+	/* Schede degli articoli: anche la pressione al clic */
+	.entry-content .wp-block-latest-posts > li:active,
+	.entry-content .display-posts-listing:has(.excerpt) > .listing-item:active,
+	.search .site-main > article:active {
+		transform: translateY(0) scale(0.99);
+	}
+
+	.search .site-main > article {
+		transition: box-shadow 0.2s ease, transform 0.2s ease;
+	}
+
+	.search .site-main > article:hover {
+		box-shadow: var(--sfn-shadow);
+		transform: translateY(-2px);
+	}
+
+	/* ---------- Categorie (etichette) ---------- */
+
+	.widget_categories ul li a,
+	.widget-area .wp-block-categories-list li a {
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	}
+
+	.widget_categories ul li a:hover,
+	.widget-area .wp-block-categories-list li a:hover {
+		transform: translateY(-2px);
+		background: var(--sfn-color-border-soft);
+	}
+
+	/* ---------- Header: logo, menu, ricerca ---------- */
+
+	.site-logo .custom-logo {
+		transition: transform 0.3s ease;
+	}
+
+	.site-logo .custom-logo-link:hover .custom-logo {
+		transform: scale(1.03);
+	}
+
+	.primary-navigation a {
+		transition: color 0.15s ease, text-underline-offset 0.15s ease;
+	}
+
+	/* Sottomenu e campo di ricerca: compaiono con una breve dissolvenza */
+	.primary-navigation > div > .menu-wrapper > li > .sub-menu-toggle[aria-expanded="true"] ~ .sub-menu,
+	.primary-navigation .sfn-menu-search:focus-within input.sfn-menu-search__field {
+		animation: sfn-drop-in 0.18s ease-out;
+	}
+
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button svg {
+		transition: transform 0.2s ease;
+	}
+
+	.primary-navigation .sfn-menu-search .sfn-menu-search__button:hover svg {
+		transform: scale(1.15);
+	}
+
+	#primary-mobile-menu .svg-icon {
+		transition: transform 0.2s ease;
+	}
+
+	#primary-mobile-menu:hover .svg-icon {
+		transform: scale(1.1);
+	}
+
+	.primary-navigation-open .primary-navigation > .primary-menu-container {
+		animation: sfn-fade-in 0.2s ease-out;
+	}
+
+	/* ---------- Slider ---------- */
+
+	.odn-dot {
+		transition: background-color 0.2s ease, transform 0.2s ease;
+	}
+
+	.odn-dot:hover {
+		transform: scale(1.35);
+	}
+
+	.odn-navlink {
+		transition: color 0.2s ease, border-color 0.2s ease;
+	}
+
+	/* contenuto della scheda: entra dal basso quando si cambia scheda */
+	.odn-slider-body {
+		animation: sfn-fade-up 0.35s ease-out;
+	}
+
+	/* ---------- Footer ---------- */
+
+	#my-footer a img {
+		transition: transform 0.2s ease;
+	}
+
+	#my-footer a:hover img {
+		transform: scale(1.12);
+	}
+
+	/* ---------- Pulsante della modalità scura ---------- */
+
+	#dark-mode-toggler {
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	}
+
+	#dark-mode-toggler:hover {
+		transform: scale(1.06);
+	}
+
+	#dark-mode-toggler::before {
+		transition: transform 0.4s ease;
+	}
+
+	#dark-mode-toggler:hover::before {
+		transform: rotate(-25deg);
+	}
+
+	/* ---------- Comparsa allo scorrimento (assets/js/reveal.js) ---------- */
+
+	.sfn-reveal {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+
+	.sfn-reveal.sfn-revealed {
+		opacity: 1;
+		transform: none;
+		transition: opacity 0.5s ease, transform 0.5s ease;
+	}
+
+	@keyframes sfn-drop-in {
+		from {
+			opacity: 0;
+			transform: translateY(-6px);
+		}
+	}
+
+	@keyframes sfn-fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes sfn-fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+	}
+}

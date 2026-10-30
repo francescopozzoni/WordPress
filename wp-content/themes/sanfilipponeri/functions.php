@@ -168,6 +168,17 @@ function sanfilipponeri_scripts() {
 		$version
 	);
 	wp_enqueue_style( 'sanfilipponeri-dark-mode', get_theme_file_uri( 'assets/css/dark-mode.css' ), array( 'sanfilipponeri-variant' ), $version );
+	wp_enqueue_style( 'sanfilipponeri-motion', get_theme_file_uri( 'assets/css/motion.css' ), array( 'sanfilipponeri-dark-mode' ), $version );
+	wp_enqueue_script(
+		'sanfilipponeri-reveal',
+		get_theme_file_uri( 'assets/js/reveal.js' ),
+		array(),
+		(string) filemtime( get_theme_file_path( 'assets/js/reveal.js' ) ),
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
 
 	if ( has_nav_menu( 'primary' ) ) {
 		wp_enqueue_script(
