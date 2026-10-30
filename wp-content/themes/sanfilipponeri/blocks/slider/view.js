@@ -42,7 +42,7 @@
 				var active = i === n - 1;
 				slides[ i ].style.display = active ? 'inline-block' : 'none';
 				if ( bodies[ i ] ) {
-					bodies[ i ].style.display = active ? 'inline-block' : 'none';
+					bodies[ i ].style.display = active ? 'block' : 'none';
 				}
 				if ( dots[ i ] ) {
 					dots[ i ].classList.toggle( 'active', active );

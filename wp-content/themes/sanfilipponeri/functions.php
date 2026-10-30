@@ -173,6 +173,31 @@ function sanfilipponeri_register_blocks() {
 add_action( 'init', 'sanfilipponeri_register_blocks' );
 
 /**
+ * Versione dei blocchi del tema = data di modifica più recente dei loro file,
+ * così CSS e JS aggiornati non restano mai nella cache del browser.
+ *
+ * @param array $metadata Metadati letti da block.json.
+ * @return array
+ */
+function sanfilipponeri_block_version( $metadata ) {
+	if ( empty( $metadata['file'] ) || 0 !== strpos( wp_normalize_path( $metadata['file'] ), wp_normalize_path( __DIR__ . '/blocks/' ) ) ) {
+		return $metadata;
+	}
+
+	// Senza GLOB_BRACE, che non esiste su tutti i sistemi.
+	$files = array_merge(
+		(array) glob( dirname( $metadata['file'] ) . '/*.css' ),
+		(array) glob( dirname( $metadata['file'] ) . '/*.js' ),
+		(array) glob( dirname( $metadata['file'] ) . '/*.json' )
+	);
+	if ( $files ) {
+		$metadata['version'] = (string) max( array_map( 'filemtime', $files ) );
+	}
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'sanfilipponeri_block_version' );
+
+/**
  * Impostazioni del Customizer per distinguere i due siti.
  *
  * @param WP_Customize_Manager $wp_customize Istanza del Customizer.
