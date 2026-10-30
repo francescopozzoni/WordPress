@@ -75,14 +75,14 @@ a{
 	color: #004077;
 }
 a:hover {
-	color: #e42313;
+	color: #004077;
 }
 
 a.customize-unpreviewable {
 	color: #004077;
 }
 a.customize-unpreviewable:hover {
-	color: #e42313;
+	color: #004077;
 }
 /* entry */
 .entry-content p, .entry-content a:link, .entry-content a:visited, .entry-content a:active {color: #004077;}
@@ -90,7 +90,7 @@ a.customize-unpreviewable:hover {
 /* clicked link */
 .has-background-white .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
     background: none;
-    color: #e42313;
+    color: #004077;
 	text-decoration: underline;}
 
 
@@ -288,7 +288,7 @@ div.search-result-count {
 	color: #004077;
 }
 .comment-body a:hover {
-	color: #e42313;
+	color: #004077;
 	text-decoration-style: solid;
 }
 
@@ -409,7 +409,7 @@ a.title {
 }
 
 a.title:hover {
-	color: #e42313;
+	color: #004077;
 	text-decoration: underline;
 	text-underline-position: auto;
 }

@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.0.2
+Version: 3.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -47,6 +47,26 @@ Text Domain: sanfilipponeri
 	--branding--logo--max-height: 100px;
 	--branding--logo--max-width-mobile: 150px;
 	--branding--logo--max-height-mobile: 100px;
+}
+
+/*
+ * Link: sottolineatura continua anche in hover e focus.
+ * Twenty Twenty-One la rende puntinata; qui si ripetono i suoi selettori
+ * così da sovrascriverli tutti a parità di specificità.
+ */
+a:hover,
+.site a:focus:not(.wp-block-button__link):not(.wp-block-file__button),
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:hover,
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:focus,
+.primary-navigation a:hover,
+.primary-navigation .current-menu-item > a:first-child:hover,
+.primary-navigation .current_page_item > a:first-child:hover,
+.footer-navigation-wrapper li a:hover,
+.navigation a:hover,
+.pagination .nav-links > *:not(.dots):not(.current):hover,
+.comments-pagination .nav-links > *:not(.dots):not(.current):hover,
+.widget a:hover {
+	text-decoration-style: solid;
 }
 
 /* Footer */
