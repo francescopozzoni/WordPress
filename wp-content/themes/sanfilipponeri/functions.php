@@ -99,7 +99,13 @@ function sanfilipponeri_footer_name() {
  * Supporti del tema.
  */
 function sanfilipponeri_setup() {
-	add_editor_style( 'editor-style.css' );
+	// L'editor usa gli stessi font, colori e larghezze del sito (compreso il CSS specifico del sito).
+	add_editor_style(
+		array(
+			'editor-style.css',
+			'assets/css/variant-' . sanfilipponeri_variant() . '.css',
+		)
+	);
 
 	// Sfondo predefinito bianco invece del verde di Twenty Twenty-One.
 	add_theme_support( 'custom-background', array( 'default-color' => 'ffffff' ) );

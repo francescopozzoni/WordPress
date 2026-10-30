@@ -20,12 +20,100 @@
 :root {
 	--global--font-primary: var(--font-headings, GalanoB);
 	--global--font-secondary: var(--font-base, Galano);
+	--global--font-size-xxl: 2rem;
 	--global--color-blue: #004077;
 	--global--color-primary: var(--global--color-blue);
+	--global--color-background: #fff;
+}
+
+body {
+	background-color: #fff;
+	font-family: Galano, sans-serif;
+	color: #004077;
+}
+
+/*
+ * Larghezza: sul sito il contenuto normale è largo quanto "wide"
+ * (regola "larghezza" in assets/css/custom.css), quindi anche qui.
+ */
+.wp-block {
+	max-width: var(--responsive--alignwide-width);
+}
+
+/* Titolo della pagina: fascia rossa con testo bianco centrato, come sul sito */
+.wp-block.editor-post-title,
+.wp-block.editor-post-title__block {
+	max-width: none;
+	margin-top: 0;
+	margin-bottom: var(--global--spacing-vertical);
+	padding: calc(2.7 * var(--global--spacing-vertical)) var(--global--spacing-horizontal);
+	background: #e42313;
+}
+
+.editor-post-title,
+.editor-post-title .editor-post-title__input,
+.editor-post-title__block .editor-post-title__input {
+	color: #fff;
+	text-align: center;
+	font-family: GalanoB, sans-serif;
+	font-size: 3em;
+	font-weight: 100;
+}
+
+/* Testi e link */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #004077;
+}
+
+a {
+	color: #004077;
+}
+
+a:hover,
+a:focus {
+	color: #e42313;
+}
+
+/* Pulsanti */
+.wp-block-button .wp-block-button__link,
+.wp-block-search__button {
+	color: #004077;
+	background-color: #fff;
+	border: var(--button--border-width) solid #004077;
+	font-size: 1.4rem;
+	padding: 15px 32px;
+	border-radius: 35px;
+	font-weight: bold;
+}
+
+.wp-block-file .wp-block-file__button {
+	color: #fff;
+	background-color: #004077;
+	border: var(--button--border-width) solid #004077;
+	font-size: 1.4rem;
+	padding: 15px 32px;
+	border-radius: 35px;
+	font-weight: bold;
+}
+
+/* Separatori larghi quanto il contenuto */
+hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
+	max-width: var(--responsive--alignwide-width);
 }
 
 /* Link: sottolineatura continua anche in hover e focus (come nel sito). */
 a:hover,
 a:focus {
 	text-decoration-style: solid;
+}
+
+/* Lo slider della home occupa tutta la larghezza */
+.wp-block[data-type="sanfilipponeri/slider"] {
+	max-width: none;
 }
