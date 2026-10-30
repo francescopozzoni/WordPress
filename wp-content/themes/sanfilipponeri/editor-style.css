@@ -105,18 +105,9 @@ body a.wp-block-file__button {
 	text-decoration: none;
 }
 
-/* Pulsanti */
+/* Pulsanti: stile del pulsante "Cerca" (pieno blu, testo bianco; invertito in hover) */
 body .wp-block-button .wp-block-button__link,
-body .wp-block-search__button {
-	color: #004077;
-	background-color: #fff;
-	border: var(--button--border-width) solid #004077;
-	font-size: 1.4rem;
-	padding: 15px 32px;
-	border-radius: 35px;
-	font-weight: bold;
-}
-
+body .wp-block-search__button,
 body .wp-block-file .wp-block-file__button {
 	color: #fff;
 	background-color: #004077;
@@ -125,6 +116,12 @@ body .wp-block-file .wp-block-file__button {
 	padding: 15px 32px;
 	border-radius: 35px;
 	font-weight: bold;
+	text-decoration: none;
+}
+
+body .wp-block-button.is-style-outline .wp-block-button__link {
+	color: #004077;
+	background-color: #fff;
 }
 
 /* Separatori larghi quanto il contenuto */

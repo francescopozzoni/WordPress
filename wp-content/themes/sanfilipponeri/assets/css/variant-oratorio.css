@@ -1,10 +1,4 @@
 /**
  * Regole specifiche del sito dell'Oratorio.
+ * (Per ora nessuna: lo stile dei bottoni è comune, in custom.css.)
  */
-
-/* bottoni download: colori forzati */
-.wp-block-file .wp-block-file__button {
-	background-color: #004077 !important;
-	border: var(--button--border-width) solid #004077 !important;
-	border-radius: 35px !important;
-}

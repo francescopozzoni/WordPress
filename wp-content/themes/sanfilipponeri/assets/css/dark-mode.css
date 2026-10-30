@@ -17,6 +17,14 @@
 	--sfn-color-link: #8fc1ff;
 	--sfn-color-accent: #ff8a7f;
 	--sfn-color-border: #8fc1ff;
+
+	/* Bottoni: azzurro chiaro con testo scuro (9.3:1); in hover solo contorno */
+	--sfn-button-bg: #8fc1ff;
+	--sfn-button-text: #141b24;
+	--sfn-button-border: #8fc1ff;
+	--sfn-button-bg-hover: transparent;
+	--sfn-button-text-hover: #8fc1ff;
+	--sfn-button-border-hover: #8fc1ff;
 }
 
 /* Link: azzurro chiaro, rosso chiaro in hover (pulsanti esclusi) */
@@ -84,4 +92,61 @@
 .is-dark-theme.is-dark-theme #my-footer img,
 .is-dark-theme.is-dark-theme .wp-block-sanfilipponeri-slider img {
 	filter: none;
+}
+
+/*
+ * Pulsante della modalità scura: icona tonda con luna (attiva la modalità
+ * scura) o sole (torna a quella chiara), con i colori dei bottoni.
+ * Il testo "Modalità scura" resta per i lettori di schermo (font-size: 0),
+ * lo stato è dato da aria-pressed.
+ */
+#dark-mode-toggler {
+	font-size: 0;
+	width: 48px;
+	height: 48px;
+	min-width: 48px;
+	min-height: 48px;
+	padding: 0;
+	border-radius: 50%;
+	border: 2px solid var(--sfn-button-border);
+	background: var(--sfn-button-bg);
+	color: var(--sfn-button-text);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+#dark-mode-toggler.fixed-bottom {
+	bottom: 16px;
+	right: 16px;
+}
+
+#dark-mode-toggler > span {
+	display: none;
+}
+
+#dark-mode-toggler::before {
+	content: "";
+	display: block;
+	width: 24px;
+	height: 24px;
+	background-color: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+#dark-mode-toggler[aria-pressed="true"]::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4.5' fill='black'/%3E%3Cpath d='M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4.5' fill='black'/%3E%3Cpath d='M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8'/%3E%3C/svg%3E");
+}
+
+#dark-mode-toggler:hover,
+#dark-mode-toggler:focus {
+	background: var(--sfn-button-bg-hover);
+	color: var(--sfn-button-text-hover);
+	border-color: var(--sfn-button-border-hover);
+}
+
+/* In modalità chiara il fondo in hover è bianco: serve comunque un bordo visibile */
+#dark-mode-toggler:focus-visible {
+	outline: 2px solid var(--sfn-color-accent);
+	outline-offset: 2px;
 }

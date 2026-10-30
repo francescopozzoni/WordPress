@@ -44,10 +44,6 @@ body {
 .menu-button-container .button.button {
     color: var(--sfn-color-text);
 }
-.site .button:focus:not(.has-background), input[type="submit"]:focus:not(.has-background), input[type="reset"]:focus:not(.has-background), .wp-block-search__button:focus:not(.has-background), .wp-block-button .wp-block-button__link:focus:not(.has-background) {
-    color: #004077;
-
-}
 
 @media only screen and (max-width: 480px) {
 .primary-navigation > .primary-menu-container {
@@ -316,29 +312,6 @@ border: var(--form--border-width) solid #004077;
 		line-height: var(--button--line-height);
 }
 
-/* search */
-.search-submit:hover {
-    background-color: #004077;
-    color: #fff;
-}
-.site .button, input[type="submit"], input[type="reset"], .wp-block-search__button, .wp-block-button .wp-block-button__link {
-    color: #fff;
-    background-color: #004077;
-    border: var(--button--border-	width) solid #004077;
-    font-size: 1.4rem;
-		padding: 15px 32px;
-    border-radius: 35px;
-    font-weight: bold;
-}
-.site .button:hover, input[type="submit"]:hover, input[type="reset"]:hover, .wp-block-search .wp-block-search__button:hover, .wp-block-file .wp-block-file__button:hover {
-    color: var(--sfn-color-text);
-    background: transparent;
-}
-.widget_search > .search-form .search-submit {color: #fff !important;
-background: #004077 !important;}
-.widget_search > .search-form .search-submit:hover {
-    background-color: #fff !important;
-    color: #004077 !important;}
 .search-form label {
 	font-weight: bold;
 }
@@ -347,38 +320,61 @@ background: #004077 !important;}
 	padding-right:30px;
 }
 
-/* bottoni di link */
-.wp-block-button:not(.is-style-outline) .wp-block-button__link:hover {
-    color: #fff !important;
-    background: #004077 !important;
-    border-color: #004077 !important;
-}
-
-.site .button, input[type="submit"], input[type="reset"], .wp-block-search__button, .wp-block-button .wp-block-button__link {
-    color: #004077;
-    background-color: #fff;
-    border: var(--button--border-width) solid #004077;
-    font-size: 1.4rem;
-	padding: 15px 32px;
-    border-radius: 35px;
-    font-weight: bold;
-}
-
-/* bottoni download */
+/*
+ * BOTTONI: tutti con lo stile del pulsante "Cerca" (pieno blu, testo bianco;
+ * in hover si invertono). I colori sono variabili definite in style.css e
+ * ridefinite in modalità scura (assets/css/dark-mode.css).
+ * !important serve a vincere sulle regole molto specifiche di Twenty Twenty-One.
+ */
+.site .button:not(#primary-mobile-menu),
+.site input[type="submit"],
+.site input[type="reset"],
+.wp-block-search__button,
+.search-submit,
+.wp-block-button__link,
 .wp-block-file .wp-block-file__button {
-    color: #fff !important;
-    cursor: pointer;
-    background-color: #004077;
-    border: var(--button--border-width) solid #004077;
-    font-size: 1.4rem;
+	color: var(--sfn-button-text) !important;
+	background: var(--sfn-button-bg) !important;
+	border: var(--button--border-width) solid var(--sfn-button-border) !important;
+	font-size: 1.4rem;
 	padding: 15px 32px;
-    border-radius: 35px;
-    font-weight: bold;
+	border-radius: 35px !important;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-.wp-block-file a.wp-block-file__button:active, .wp-block-file a.wp-block-file__button:focus, .wp-block-file a.wp-block-file__button:hover, .wp-block-file a.wp-block-file__button:visited {
-    color: #004077 !important;
-	  background-color: #fff !important;
+.site .button:not(#primary-mobile-menu):hover,
+.site .button:not(#primary-mobile-menu):focus,
+.site input[type="submit"]:hover,
+.site input[type="submit"]:focus,
+.site input[type="reset"]:hover,
+.site input[type="reset"]:focus,
+.wp-block-search__button:hover,
+.wp-block-search__button:focus,
+.search-submit:hover,
+.search-submit:focus,
+.wp-block-button__link:hover,
+.wp-block-button__link:focus,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-file .wp-block-file__button:focus {
+	color: var(--sfn-button-text-hover) !important;
+	background: var(--sfn-button-bg-hover) !important;
+	border-color: var(--sfn-button-border-hover) !important;
+}
+
+/* Stile "contorno" dei blocchi pulsante: parte già invertito */
+.wp-block-button.is-style-outline .wp-block-button__link {
+	color: var(--sfn-button-text-hover) !important;
+	background: var(--sfn-button-bg-hover) !important;
+	border-color: var(--sfn-button-border-hover) !important;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link:hover,
+.wp-block-button.is-style-outline .wp-block-button__link:focus {
+	color: var(--sfn-button-text) !important;
+	background: var(--sfn-button-bg) !important;
+	border-color: var(--sfn-button-border) !important;
 }
 
 /********* FOOTER *********/
