@@ -992,7 +992,12 @@ div.tickera_additional_info h3:before {
 	}
 
 	#footer-info {
-		padding: 0.75rem 4.25rem 1rem;
+		padding: 0.75rem 4.25rem 0;
 		line-height: 1.5;
 	}
+}
+
+/* Poco spazio sotto la riga del copyright (Twenty Twenty-One: 51px) */
+.site-footer {
+	padding-bottom: 0.75rem;
 }
