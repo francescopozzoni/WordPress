@@ -59,9 +59,22 @@
 	color: #e42313;
 }
 
+/* Campo "Link del pulsante" dentro il riquadro blu */
 .sfn-slide-editor__hero .sfn-slide-editor__link {
+	margin: 1em 0 0;
+}
+
+.sfn-slide-editor__hero .sfn-slide-editor__link label {
+	display: block;
 	color: #fff;
-	opacity: 0.8;
-	font-size: 0.8em;
-	margin: 0.8em 0 0;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	margin-bottom: 0.3em;
+}
+
+.sfn-slide-editor__hero .sfn-slide-editor__link input {
+	width: 100%;
+	background: #fff;
+	color: #1e1e1e;
+	font-size: 0.85em;
 }

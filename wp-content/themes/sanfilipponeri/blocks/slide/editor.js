@@ -101,11 +101,17 @@
 						},
 					} ),
 					el(
-						'p',
+						'div',
 						{ className: 'sfn-slide-editor__link' },
-						attributes.buttonUrl
-							? 'Link: ' + attributes.buttonUrl
-							: 'Nessun link: il pulsante porta al contenuto della scheda (impostalo nella barra laterale → Pulsante)'
+						el( blockEditor.URLInput, {
+							label: 'Link del pulsante',
+							value: attributes.buttonUrl,
+							placeholder: 'Cerca una pagina o incolla un indirizzo (vuoto = scorre al contenuto)',
+							onChange: function ( value ) {
+								setAttributes( { buttonUrl: value } );
+							},
+							__nextHasNoMarginBottom: true,
+						} )
 					)
 				),
 				el( 'div', innerBlocksProps )
