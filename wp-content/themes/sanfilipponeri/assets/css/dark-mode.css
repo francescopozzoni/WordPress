@@ -63,32 +63,72 @@
 	color: #fff;
 }
 
-/* Campi dei form: fondo bianco e testo blu, come in modalità chiara */
+/* Campi dei form: fondo scuro leggermente rialzato, testo chiaro, bordo azzurro */
 .is-dark-theme.is-dark-theme input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
 .is-dark-theme.is-dark-theme select,
 .is-dark-theme.is-dark-theme textarea {
-	background-color: #fff;
-	color: #004077;
+	background-color: #1d2632;
+	color: var(--sfn-color-text);
+	border-color: var(--sfn-color-border);
+}
+
+.is-dark-theme.is-dark-theme ::placeholder {
+	color: #9ab0c8;
 }
 
 /*
- * Blocchi con sfondo chiaro scelto nell'editor (palette di Twenty Twenty-One):
- * mantengono il testo scuro, altrimenti diventerebbe chiaro su chiaro.
+ * Blocchi con sfondo bianco (banner, riquadri): diventano un riquadro scuro
+ * rialzato con testo chiaro, invece di restare macchie bianche.
  */
-.is-dark-theme.is-dark-theme :is(.has-white-background-color, .has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color),
-.is-dark-theme.is-dark-theme :is(.has-white-background-color, .has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color) :is(p, li, h1, h2, h3, h4, h5, h6, a) {
+.is-dark-theme.is-dark-theme .has-white-background-color {
+	background-color: #1d2632 !important;
+	color: var(--sfn-color-text);
+}
+
+/*
+ * Altri sfondi chiari della palette (pastello): restano, con testo scuro
+ * per non avere chiaro su chiaro.
+ */
+.is-dark-theme.is-dark-theme :is(.has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color),
+.is-dark-theme.is-dark-theme :is(.has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color) :is(p, li, h1, h2, h3, h4, h5, h6, a) {
 	color: #004077;
 }
 
-/* Logo: su un riquadro chiaro, così resta leggibile */
-.is-dark-theme.is-dark-theme .site-logo .custom-logo {
-	background-color: #fff;
-	border-radius: 8px;
-	padding: 6px;
+/* Pulsante dello slider: come gli altri bottoni in modalità scura */
+.is-dark-theme.is-dark-theme .wp-block-sanfilipponeri-slider .odn-button {
+	background-color: var(--sfn-button-bg) !important;
+	color: var(--sfn-button-text) !important;
+}
+
+/*
+ * Logo: senza riquadro bianco. Se nel Customizer è caricato un "Logo per la
+ * modalità scura" si usa quello, altrimenti il logo diventa bianco.
+ */
+.sfn-dark-logo {
+	display: none;
+}
+
+.is-dark-theme.is-dark-theme .site-logo .sfn-dark-logo {
+	display: inline-block;
+}
+
+.is-dark-theme.is-dark-theme .site-logo .custom-logo-link.has-dark-logo .custom-logo:not(.sfn-dark-logo) {
+	display: none;
+}
+
+.is-dark-theme.is-dark-theme .site-logo .custom-logo-link:not(.has-dark-logo) .custom-logo {
+	filter: brightness(0) invert(1);
+}
+
+/* Immagini (banner, locandine): un po' più smorzate del bianco pieno */
+.is-dark-theme.is-dark-theme .entry-content img,
+.is-dark-theme.is-dark-theme .wp-block-image img,
+.is-dark-theme.is-dark-theme .post-thumbnail img {
+	filter: brightness(0.8) contrast(1.05);
 }
 
 /* Twenty Twenty-One scurisce le immagini: non serve per logo e icone */
-.is-dark-theme.is-dark-theme .custom-logo,
+.is-dark-theme.is-dark-theme .custom-logo-link.has-dark-logo .custom-logo,
 .is-dark-theme.is-dark-theme #my-footer img,
 .is-dark-theme.is-dark-theme .wp-block-sanfilipponeri-slider img {
 	filter: none;

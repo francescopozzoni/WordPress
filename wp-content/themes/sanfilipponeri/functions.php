@@ -254,6 +254,67 @@ function sanfilipponeri_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'sanfilipponeri_customize_register' );
 
 /**
+ * Logo alternativo per la modalità scura, sotto "Identità del sito".
+ *
+ * @param WP_Customize_Manager $wp_customize Istanza del Customizer.
+ */
+function sanfilipponeri_customize_dark_logo( $wp_customize ) {
+	$wp_customize->add_setting(
+		'sfn_dark_logo',
+		array(
+			'default'           => 0,
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'sfn_dark_logo',
+			array(
+				'label'       => 'Logo per la modalità scura',
+				'description' => 'Versione chiara del logo, mostrata quando il sito è in modalità scura. Se manca, il logo viene mostrato tutto bianco.',
+				'section'     => 'title_tagline',
+				'mime_type'   => 'image',
+				'priority'    => 9,
+			)
+		)
+	);
+}
+add_action( 'customize_register', 'sanfilipponeri_customize_dark_logo' );
+
+/**
+ * Aggiunge al logo la versione per la modalità scura (mostrata solo via CSS).
+ *
+ * @param string $html Markup del logo.
+ * @return string
+ */
+function sanfilipponeri_dark_logo( $html ) {
+	$dark_logo_id = (int) get_theme_mod( 'sfn_dark_logo' );
+	if ( ! $html || ! $dark_logo_id ) {
+		return $html;
+	}
+
+	$dark_logo = wp_get_attachment_image(
+		$dark_logo_id,
+		'full',
+		false,
+		array(
+			'class'   => 'custom-logo sfn-dark-logo',
+			'alt'     => get_bloginfo( 'name', 'display' ),
+			'loading' => false,
+		)
+	);
+	if ( ! $dark_logo ) {
+		return $html;
+	}
+
+	$html = str_replace( 'class="custom-logo-link"', 'class="custom-logo-link has-dark-logo"', $html );
+	// Il logo è racchiuso in <a> oppure, in homepage, in <span>.
+	return preg_replace( '#(</(?:a|span)>)\s*$#', $dark_logo . '$1', $html, 1 );
+}
+add_filter( 'get_custom_logo', 'sanfilipponeri_dark_logo' );
+
+/**
  * Al primo cambio tema copia logo, menu e impostazioni dal tema precedente
  * (es. la vecchia copia "oratorionembro-new").
  *
