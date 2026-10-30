@@ -480,6 +480,8 @@ header.page-header.alignwide {
 .singular .entry-header {
     padding-top: var(--sfn-band-padding);
 		padding-bottom: var(--sfn-band-padding);
+	/* spazio tra la fascia del titolo e il contenuto (Twenty Twenty-One: 90px) */
+	margin-bottom: calc(1.25 * var(--global--spacing-vertical));
 	margin-left: 0;
 	margin-right: 0;
 	max-width: none;
@@ -724,6 +726,12 @@ div.content {
 	margin-right: auto;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+/* niente spazio in più se la pagina comincia con un'immagine */
+.entry-content > .wp-block-image:first-child img,
+.entry-content > figure:first-child img {
+	padding-top: 0;
 }
 
 .wp-block-embed {
@@ -1029,5 +1037,12 @@ div.tickera_additional_info h3:before {
 
 	:root {
 		--sfn-gutter: 1.25rem;
+	}
+}
+
+@media only screen and (max-width: 481.98px) {
+
+	.singular .entry-header {
+		margin-bottom: 1.25rem;
 	}
 }
