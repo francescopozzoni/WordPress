@@ -405,7 +405,7 @@ function sanfilipponeri_menu_search( $items, $args ) {
 add_filter( 'wp_nav_menu_items', 'sanfilipponeri_menu_search', 10, 2 );
 
 /**
- * Elenco delle categorie (widget classico): solo le 10 più usate.
+ * Elenco delle categorie (widget classico): solo le 5 più usate.
  *
  * @param array $args Argomenti di wp_list_categories().
  * @return array
@@ -422,7 +422,7 @@ function sanfilipponeri_limit_categories( $args ) {
 		array(
 			'orderby'      => 'count',
 			'order'        => 'DESC',
-			'number'       => 10,
+			'number'       => 5,
 			'hierarchical' => false,
 		)
 	);
