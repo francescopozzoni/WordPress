@@ -71,18 +71,43 @@ h6 {
 	color: #004077;
 }
 
-a {
+/*
+ * Link come sul sito: blu, sottolineatura sottile staccata dal testo,
+ * rossi in hover. "body" diventa .editor-styles-wrapper: la specificità più
+ * alta evita che prevalgano gli stili dell'amministrazione di WordPress.
+ */
+body a,
+body a:link,
+body a:visited {
 	color: #004077;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	text-decoration-skip-ink: all;
 }
 
-a:hover,
-a:focus {
+body a:hover,
+body a:active,
+body a:focus {
 	color: #e42313;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: none;
+}
+
+body a:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+/* I pulsanti hanno i propri colori */
+body a.wp-block-button__link,
+body a.wp-block-file__button {
+	text-decoration: none;
 }
 
 /* Pulsanti */
-.wp-block-button .wp-block-button__link,
-.wp-block-search__button {
+body .wp-block-button .wp-block-button__link,
+body .wp-block-search__button {
 	color: #004077;
 	background-color: #fff;
 	border: var(--button--border-width) solid #004077;
@@ -92,7 +117,7 @@ a:focus {
 	font-weight: bold;
 }
 
-.wp-block-file .wp-block-file__button {
+body .wp-block-file .wp-block-file__button {
 	color: #fff;
 	background-color: #004077;
 	border: var(--button--border-width) solid #004077;
@@ -105,12 +130,6 @@ a:focus {
 /* Separatori larghi quanto il contenuto */
 hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
 	max-width: var(--responsive--alignwide-width);
-}
-
-/* Link: sottolineatura continua anche in hover e focus (come nel sito). */
-a:hover,
-a:focus {
-	text-decoration-style: solid;
 }
 
 /* Lo slider della home occupa tutta la larghezza */

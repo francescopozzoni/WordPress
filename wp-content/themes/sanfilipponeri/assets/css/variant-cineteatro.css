@@ -23,8 +23,8 @@ a.wp-block-latest-posts__post-title {
 }
 
 .ultp-not-found-message {
-	color: #004077;
-	border-color: #004077;
+	color: var(--sfn-color-text);
+	border-color: var(--sfn-color-border);
 	border-width: 2px;
 }
 
@@ -48,4 +48,11 @@ a.wp-block-latest-posts__post-title {
 
 .entry-content {
 	padding: 0px 5px !important
+}
+
+/* Modalità scura: colori dei blocchi PostX leggibili su fondo scuro */
+.is-dark-theme.is-dark-theme {
+	--postx_preset_Primary_color: #8fc1ffaa !important;
+	--postx_preset_Secondary_color: #8fc1ff !important;
+	--postx_preset_Base_3_color: #141b24 !important;
 }

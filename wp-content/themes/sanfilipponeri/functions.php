@@ -127,6 +127,19 @@ function sanfilipponeri_default_background_color( $value ) {
 add_filter( 'theme_mod_background_color', 'sanfilipponeri_default_background_color' );
 
 /**
+ * Supporto alla modalità scura di Twenty Twenty-One attivo di default
+ * (si può disattivare in Customizer → Colori e modalità scura).
+ *
+ * @param bool $value Valore dell'impostazione.
+ * @return bool
+ */
+function sanfilipponeri_default_dark_mode( $value ) {
+	$mods = get_theme_mods();
+	return isset( $mods['respect_user_color_preference'] ) ? $value : true;
+}
+add_filter( 'theme_mod_respect_user_color_preference', 'sanfilipponeri_default_dark_mode' );
+
+/**
  * Carica lo stile del child theme dopo quello di Twenty Twenty-One,
  * seguito dal CSS comune e da quello specifico del sito.
  */
@@ -141,6 +154,7 @@ function sanfilipponeri_scripts() {
 		array( 'sanfilipponeri-custom' ),
 		$version
 	);
+	wp_enqueue_style( 'sanfilipponeri-dark-mode', get_theme_file_uri( 'assets/css/dark-mode.css' ), array( 'sanfilipponeri-variant' ), $version );
 }
 add_action( 'wp_enqueue_scripts', 'sanfilipponeri_scripts', 20 );
 

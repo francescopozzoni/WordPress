@@ -1,0 +1,87 @@
+/**
+ * Modalità scura (si appoggia a quella di Twenty Twenty-One: classe .is-dark-theme
+ * su <html> e <body>, attivata dalla preferenza del dispositivo o dal pulsante).
+ *
+ * Le fasce colorate (footer, titoli, slider) restano blu/rosse con testo bianco;
+ * cambiano solo i testi sullo sfondo della pagina. Contrasti su #141b24:
+ * testo 14.4:1, link 9.3:1, rosso 7.6:1.
+ */
+
+.is-dark-theme.is-dark-theme {
+	--global--color-background: #141b24;
+	--global--color-primary: #e3ebf5;
+	--global--color-secondary: #e3ebf5;
+	--global--color-border: #8fc1ff;
+
+	--sfn-color-text: #e3ebf5;
+	--sfn-color-link: #8fc1ff;
+	--sfn-color-accent: #ff8a7f;
+	--sfn-color-border: #8fc1ff;
+}
+
+/* Link: azzurro chiaro, rosso chiaro in hover (pulsanti esclusi) */
+.is-dark-theme.is-dark-theme a:where(:not(.wp-block-button__link, .wp-block-file__button, .odn-button, .button)) {
+	color: var(--sfn-color-link);
+}
+
+.is-dark-theme.is-dark-theme a:where(:not(.wp-block-button__link, .wp-block-file__button, .odn-button, .button)):hover,
+.is-dark-theme.is-dark-theme a:where(:not(.wp-block-button__link, .wp-block-file__button, .odn-button, .button)):focus {
+	color: var(--sfn-color-accent);
+}
+
+/* Voce di menu della pagina corrente: resta rossa */
+.is-dark-theme.is-dark-theme .primary-navigation .current-menu-item > a:first-child,
+.is-dark-theme.is-dark-theme .primary-navigation .current_page_item > a:first-child {
+	color: var(--sfn-color-accent);
+}
+
+/* Nel menu mobile (fondo blu) i link restano bianchi */
+@media only screen and (max-width: 480px) {
+
+	.is-dark-theme.is-dark-theme .primary-navigation > .primary-menu-container a {
+		color: #fff;
+	}
+}
+
+.is-dark-theme.is-dark-theme .primary-navigation .sub-menu {
+	background-color: var(--global--color-background);
+}
+
+/* Link e testi dentro le fasce colorate restano bianchi */
+.is-dark-theme.is-dark-theme #my-footer a,
+.is-dark-theme.is-dark-theme .wp-block-sanfilipponeri-slider .odn-slide a:not(.odn-button),
+.is-dark-theme.is-dark-theme .entry-header.alignwide a,
+.is-dark-theme.is-dark-theme .page-header.alignwide a {
+	color: #fff;
+}
+
+/* Campi dei form: fondo bianco e testo blu, come in modalità chiara */
+.is-dark-theme.is-dark-theme input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+.is-dark-theme.is-dark-theme select,
+.is-dark-theme.is-dark-theme textarea {
+	background-color: #fff;
+	color: #004077;
+}
+
+/*
+ * Blocchi con sfondo chiaro scelto nell'editor (palette di Twenty Twenty-One):
+ * mantengono il testo scuro, altrimenti diventerebbe chiaro su chiaro.
+ */
+.is-dark-theme.is-dark-theme :is(.has-white-background-color, .has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color),
+.is-dark-theme.is-dark-theme :is(.has-white-background-color, .has-green-background-color, .has-purple-background-color, .has-red-background-color, .has-orange-background-color, .has-yellow-background-color):not(.has-text-color) :is(p, li, h1, h2, h3, h4, h5, h6, a) {
+	color: #004077;
+}
+
+/* Logo: su un riquadro chiaro, così resta leggibile */
+.is-dark-theme.is-dark-theme .site-logo .custom-logo {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 6px;
+}
+
+/* Twenty Twenty-One scurisce le immagini: non serve per logo e icone */
+.is-dark-theme.is-dark-theme .custom-logo,
+.is-dark-theme.is-dark-theme #my-footer img,
+.is-dark-theme.is-dark-theme .wp-block-sanfilipponeri-slider img {
+	filter: none;
+}
