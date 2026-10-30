@@ -182,8 +182,10 @@
 
 	/* ---------- Pulsante della modalità scura ---------- */
 
-	#dark-mode-toggler {
-		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	/* (mantiene la transizione di "bottom" con cui Twenty Twenty-One lo nasconde allo scorrimento) */
+	#dark-mode-toggler,
+	#dark-mode-toggler.fixed-bottom {
+		transition: bottom 0.5s, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 	}
 
 	#dark-mode-toggler:hover {
