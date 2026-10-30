@@ -7,7 +7,7 @@ Description: Child theme di Twenty Twenty-One condiviso dai siti dell'Oratorio e
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 3.9.4
+Version: 3.9.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sanfilipponeri
@@ -493,6 +493,26 @@ a:hover,
 	max-width: min(calc(var(--sfn-prose-width) + 3rem), var(--responsive--alignwide-width));
 	border-top: 1px solid var(--sfn-color-border-soft);
 	margin-top: 2rem;
+}
+
+/*
+ * Footer sempre in fondo: sulle pagine brevi l'area dei contenuti si allunga
+ * fino a spingere il footer al bordo inferiore dello schermo.
+ */
+#page.site {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - var(--global--admin-bar--height, 0px));
+	min-height: calc(100dvh - var(--global--admin-bar--height, 0px));
+}
+
+/* In una colonna flex i blocchi con margini automatici non si allargano da soli */
+#page.site > :not(.skip-link) {
+	width: 100%;
+}
+
+#page.site > .site-content {
+	flex: 1 0 auto;
 }
 
 /* Footer */
