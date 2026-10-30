@@ -82,6 +82,16 @@
 		transform: scale(1.04);
 	}
 
+	/* Immagini ingrandibili al clic (senza link): leggero zoom con ombra */
+	.entry-content .wp-lightbox-container img {
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.entry-content .wp-lightbox-container:hover img {
+		transform: scale(1.02);
+		box-shadow: 0 10px 28px rgba(0, 32, 64, 0.22);
+	}
+
 	/* Schede degli articoli: anche la pressione al clic */
 	.entry-content .wp-block-latest-posts > li:active,
 	.entry-content .display-posts-listing:has(.excerpt) > .listing-item:active,
@@ -123,6 +133,28 @@
 
 	.primary-navigation a {
 		transition: color 0.15s ease, text-underline-offset 0.15s ease;
+	}
+
+	/*
+	 * Voci del menu (desktop): in hover una sottolineatura che si allarga dal
+	 * centro, al posto di quella che compare di colpo. La voce della pagina
+	 * corrente resta sottolineata come prima.
+	 */
+	@media only screen and (min-width: 482px) {
+
+		.primary-navigation .primary-menu-container > ul > .menu-item:not(.current-menu-item):not(.current_page_item) > a {
+			background-image: linear-gradient(currentColor, currentColor);
+			background-repeat: no-repeat;
+			background-position: 50% calc(100% - 0.35em);
+			background-size: 0 2px;
+			transition: color 0.15s ease, background-size 0.25s ease;
+		}
+
+		.primary-navigation .primary-menu-container > ul > .menu-item:not(.current-menu-item):not(.current_page_item) > a:hover,
+		.primary-navigation .primary-menu-container > ul > .menu-item:not(.current-menu-item):not(.current_page_item):hover > a {
+			text-decoration: none;
+			background-size: calc(100% - 2 * var(--primary-nav--padding)) 2px;
+		}
 	}
 
 	/* Sottomenu e campo di ricerca: compaiono con una breve dissolvenza */
