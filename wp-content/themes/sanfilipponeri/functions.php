@@ -100,8 +100,25 @@ function sanfilipponeri_footer_name() {
  */
 function sanfilipponeri_setup() {
 	add_editor_style( 'editor-style.css' );
+
+	// Sfondo predefinito bianco invece del verde di Twenty Twenty-One.
+	add_theme_support( 'custom-background', array( 'default-color' => 'ffffff' ) );
 }
 add_action( 'after_setup_theme', 'sanfilipponeri_setup', 20 );
+
+/**
+ * Twenty Twenty-One usa il verde 'D1E4DD' come sfondo predefinito anche nel
+ * suo codice PHP (colori leggibili, modalità scura, editor): finché lo sfondo
+ * non è stato scelto nel Customizer, risponde bianco.
+ *
+ * @param string $value Colore di sfondo (esadecimale senza #).
+ * @return string
+ */
+function sanfilipponeri_default_background_color( $value ) {
+	$mods = get_theme_mods();
+	return isset( $mods['background_color'] ) ? $value : 'ffffff';
+}
+add_filter( 'theme_mod_background_color', 'sanfilipponeri_default_background_color' );
 
 /**
  * Carica lo stile del child theme dopo quello di Twenty Twenty-One,
